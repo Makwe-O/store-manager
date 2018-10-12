@@ -75,6 +75,12 @@ nav ul li{
 .btn__color--dark{
     color:#3f3f3f;
 }
+.text__color--orange{
+    color:#ed792b;
+}
+.text__font--largest{
+    font-size:42px
+}
 
 /*end Buttons*/
 
@@ -235,7 +241,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:100px 0px;
+    height: 80vh;
 }
 .text-center{
     text-align: center;
@@ -244,4 +250,8 @@ main {
     padding:50px;
     box-shadow:1px 1px 10px #3b3b3b;
     max-width: 300px;
+}
+.footer-bottom{
+    position:fixed;
+    bottom:0;
 }
