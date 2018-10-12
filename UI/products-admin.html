@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Products Record|Store Manager</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+  </head>
+  <body>
+    <div id="wrapper">
+
+         <!--Sidebar-->
+        <div class="dashboard-nav">
+            <header class="dashboard-header text-center">
+                <h1 class="dashboard-header__title">Store Manager</h1>
+                <h3>Welcome</h3>
+                <p>Notmaks</p>
+            </header>
+        
+            <ul>
+                <li><a href="dashboard-admin.html">Dashboard</a></li>
+                <li><a href="sales-attendants.html">Sales Attendants</a></li>
+                <li><a class="active" href="products-admin.html">Products</a></li>
+                <li><a href="categories-admin.html">Categories</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+
+         <!--Main Content-->
+        <main>
+            <div class="dashboard-header__title">
+                <h1>STORE ADMIN</h1>
+                <p>Tuesday, 9th October 2018 11:00</p>
+            </div>
+            
+            <div class="card-grid">
+               
+                <div class="card">
+                        <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                        <div class="card__body ">
+                            <h4 class="card__title">Sony SPS</h4>
+                            <div class="card__text">
+                                <p><strong>Price:</strong> 22000</p>
+                                <p><strong>Category:</strong> Electronics</p>
+                                <p><strong>Inventory:</strong> 20</p>
+                                <p><strong>Minimum Inventory Quantity:</strong> 20</p>
+                            </div>
+
+                            <div>
+                                <a href="#" class="btn btn__color--dark btn__border--orange">View</a>
+                                <a href="#" class="btn btn__color--dark btn__border--orange">Edit</a>
+                                <a href="#" class="btn btn__color--dark btn__border--orange">Delete</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+               
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body">
+                        <h4 class="card__title">Sony SPS</h4>
+                        <div class="card__text">
+                            <p><strong>Price:</strong> 22000</p>
+                            <p><strong>Category:</strong> Electronics</p>
+                            <p><strong>Inventory:</strong> 20</p>
+                            <p><strong>Minimum Inventory Quantity:</strong> 20</p>
+                        </div>
+
+                        <div>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">Edit</a>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body">
+                        <h4 class="card__title">Sony SPS</h4>
+                        <div class="card__text">
+                            <p><strong>Price:</strong> 22000</p>
+                            <p><strong>Category:</strong> Electronics</p>
+                            <p><strong>Inventory:</strong> 20</p>
+                            <p><strong>Minimum Inventory Quantity:</strong> 20</p>
+                        </div>
+
+                        <div>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">Edit</a>
+                            <a href="#" class="btn btn__color--dark btn__border--orange">Delete</a>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+            <div>
+                <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add Product</a>
+            </div>
+            
+        </main>
+    </div>
+
+     <!--Modal-->
+     <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center">
+                    <h2>Add Product</h2>
+                </div>
+                <div class="close">+</div>
+            </div>
+            <div class="modal-body">
+                <form action="" id="create-sales-record">
+                    <input type="text" class="" placeholder="Product Name"/>
+                    <input type="file" id="input-image" accept="image/*" name="image">
+                    <input type="text" class="" placeholder="Price"/>
+                    <select>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="leisure">Leisure</option>
+                    </select>
+                    <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                </form>
+            </div>
+        </div>
+    </div>
+      <!-- <footer>
+          <div class="container">
+            <p class="text-center">Copyrigth 2018</p>
+          </div>
+      </footer> -->
+      <script src="js/script.js"></script>
+  </body>
+</html>

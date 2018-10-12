@@ -1,0 +1,19 @@
+{
+  "name": "store-manager",
+  "version": "1.0.0",
+  "description": "Store manager UI",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Makwe-O/store-manager.git"
+  },
+  "author": "Mmakwe Onyeka Blessing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Makwe-O/store-manager/issues"
+  },
+  "homepage": "https://github.com/Makwe-O/store-manager#readme"
+}

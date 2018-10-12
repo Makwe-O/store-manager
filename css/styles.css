@@ -1,0 +1,247 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+a.active{
+    background:#ed792b;
+}
+html, body {
+    height: 100%;
+  }
+body{
+    font-family: 'Roboto', sans-serif;
+}
+li{
+    list-style-type:none
+}
+input, select{
+    border: none;
+    border-bottom: 2px solid #ed792b;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #3b3b3b;
+    font-size: 16px;
+    width:100%;
+    margin:20px 0px
+   
+}
+header, footer{
+    background:#3F3F3F;
+}
+footer {
+    font-size:12px;
+    left: 0;
+    bottom: 0;
+    width:100%;
+    padding:20px 0px;
+    font-weight:300;
+    color:#fff;
+
+}
+
+nav{
+    min-height: 100px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+nav ul{
+    display: flex;
+    justify-content:space-between;
+}
+nav ul li{
+    padding:0px 20px;
+}
+
+/*Buttons*/
+.btn{
+    padding:10px 20px;
+}
+.btn:hover{
+    background:#ed792b;
+}
+.btn__color--white{
+    color:#fff;
+}
+.btn__border--orange{
+    border:2px solid #ed792b;
+}
+.btn__color--dark{
+    color:#3f3f3f;
+}
+
+/*end Buttons*/
+
+
+#wrapper{
+   
+}
+.dashboard-nav{
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 30;
+    width: 200px;
+    background: #3F3F3F;
+    color: #fff;
+    box-shadow: 2px 1px 2px #3f3f3f;
+}
+.dashboard-nav ul span {
+    display: block;
+    padding: 15px;
+    color: rgba(255,255,255,.5);
+    text-transform: uppercase;
+    border-bottom: 1px solid #ed792b;
+  }
+  
+.dashboard-nav ul a {
+    position: relative;
+    display: block;
+    padding: 15px 15px 17px 50px;
+    color: #fff;
+    border-bottom: 1px solid #ed792b;
+  }
+
+.dashboard-nav ul a:hover,
+.dashboard-navnav ul a.active {
+    background: #ed792b;
+}
+.dashboard-header{
+   padding:30px; 
+   border-bottom: 1px solid #ed792b;
+}
+.dashboard-header__title{
+    margin-bottom:30px;
+}
+
+main {
+    margin-left: 200px;
+    position: relative;
+    z-index: 10;
+    min-height: 100%;
+    padding: 30px;
+    
+  }
+  
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid #3f3f3f;
+    border-right: 1px solid #3f3f3f;
+    margin-bottom:30px;
+}
+.table-grid--6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-top: 1px solid #3f3f3f;
+    border-right: 1px solid #3f3f3f;
+    margin-bottom:30px;
+}
+.grid-header{
+    background:#ed792b;
+    border-top: 1px solid #ed792b;
+    border-right: 1px solid #ed792b;
+}
+
+.table-grid > span, .table-grid--6 > span{
+    padding: 15px 15px;
+    border-left: 1px solid #3f3f3f;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+/*Modal*/
+.modal{
+    position: absolute;
+    top:0;
+    background:rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.modal-content{
+    width:500px;
+    min-height:300px;
+    background-color:#fff;
+    padding:30px;
+    position: relative;
+}
+.close{
+    position: absolute;
+    font-size: 40px;
+    transform: rotate(45deg);
+    top:0;
+    right:15px;
+    cursor: pointer;
+}
+
+
+.card{ 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    box-shadow: 0px 4px 8px #3f3f3f;
+}
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+    margin-bottom:30px;
+}
+.card__body{
+    padding:30px;
+}
+.card__title, .card__text{
+    margin-bottom:20px
+}
+.card__body--right{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+
+}
+.user-details{
+    margin:30px 0px;
+}
+
+
+
+
+
+.container{
+    max-width:80%;
+    margin:0px auto;
+}
+.content-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:100px 0px;
+}
+.text-center{
+    text-align: center;
+}
+.form-container{
+    padding:50px;
+    box-shadow:1px 1px 10px #3b3b3b;
+    max-width: 300px;
+}

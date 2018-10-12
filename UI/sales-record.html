@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Sales Record|Store Manager</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <!--Sidebar-->
+        <div class="dashboard-nav">
+            <header class="dashboard-header text-center">
+                <h1 class="dashboard-header__title">Store Manager</h1>
+                <h3>Welcome</h3>
+                <p>Notmaks</p>
+            </header>
+        
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a  class="active" href="sales-record.html">Sales Record</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>       
+        </div>
+
+        <!--Main Content-->
+        <main>
+            <div class="dashboard-header__title">
+                <h1>STORE ATTENDANT</h1>
+                <p>Tuesday, 9th October 2018 11:00</p>
+            </div>
+
+            <div class="table-grid">
+                <span class="grid-header"><strong>Order Id</strong></span>
+                <span class="grid-header"><strong>Prod. Name</strong></span>
+                <span class="grid-header"><strong>Buyers Name</strong></span>
+                <span class="grid-header"><strong>Amount</strong></span>
+                <span class="grid-header"><strong>Date</strong></span>
+
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
+
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
+
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
+
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
+                    
+            </div>
+            <div>
+                <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Create Sales Record</a>
+            </div>
+        </main>
+    </div>
+     <!--Modal-->
+     <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title text-center">
+                        <h2>Create Sales Record</h2>
+                    </div>
+                    <div class="close">+</div>
+                </div>
+                <div class="modal-body">
+                    <form id="/sales-record.html" id="create-sales-record">
+                        <select>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="electronics">Sony SPS</option>
+                        </select>
+                        <input type="text" placeholder="Buyers Name"/>
+                        <input type="text" class="" placeholder="Price"/>
+                        <input type="Date" placeholder="Date"/>
+                        <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+      <!-- <footer>
+          <div class="container">
+            <p class="text-center">Copyrigth 2018</p>
+          </div>
+      </footer> -->
+      <script src="js/script.js"></script>
+  </body>
+</html>
