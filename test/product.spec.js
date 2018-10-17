@@ -15,3 +15,21 @@ describe('Test for Products', () => {
       });
   });
 });
+describe('GET /products/:id', () => {
+  it('Endpoint should return 404 if an invalid id is passed', (done) => {
+    chai.request(server)
+      .get(`/api/v1/products/${9}`)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done(err);
+      });
+  });
+  it('should be an object', (done) => {
+    chai.request(server)
+      .get(`/api/v1/products/${1}`)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done(err);
+      });
+  });
+});
