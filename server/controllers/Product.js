@@ -24,9 +24,9 @@ const Product = {
     const product = ProductModel;
     product.Products.push({
       id: '3',
-      name: name,
-      price: price,
-      quantity: quantity,
+      name,
+      price,
+      quantity,
     });
     res.json(product.Products[product.Products.length - 1]).status(201);
   },

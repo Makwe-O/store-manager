@@ -17,8 +17,20 @@ const Sale = {
       }
     });
     if (!found) {
-      res.status(404).json('Product not found');
+      res.status(404).json('Sales record not found');
     }
+  },
+  create(req, res) {
+    const { productName, price, buyersName, amount } = req.body;
+    const product = SaleModel;
+    product.Sales.push({
+      id: '3',
+      productName,
+      price,
+      buyersName,
+      amount,
+    });
+    res.json(product.Sales[product.Sales.length - 1]);
   },
 };
 export default Sale;
