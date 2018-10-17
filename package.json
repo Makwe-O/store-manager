@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "start": "babel-node index.js",
+    "cover": "istanbul cover _mocha --compilers js:babel-core/register",
+    "start": "babel-watch index.js",
     "lint": "eslint server/src"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "request": "^2.88.0",

@@ -5,13 +5,13 @@ import server from '../index';
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('Test for Products', () => {
-  it('should return 200', (done) => {
+describe('GET /sales', () => {
+  it('should return all sales records', (done) => {
     chai.request(server)
-      .get('/api/v1/products')
+      .get('/api/v1/sales')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        done();
+        done(err);
       });
   });
 });
