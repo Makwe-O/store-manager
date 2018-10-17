@@ -42,7 +42,7 @@ describe('GET /sales/:id', () => {
       });
   });
 });
-describe('POST /products', () => {
+describe('POST /sales', () => {
   it('should return an object if valid input is passed', (done) => {
     chai.request(server)
       .post('/api/v1/product/sales')
