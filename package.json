@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "cover": "istanbul cover _mocha",
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "lint": "eslint server/src"
   },
   "repository": {
     "type": "git",

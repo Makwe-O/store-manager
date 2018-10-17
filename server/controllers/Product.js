@@ -19,5 +19,16 @@ const Product = {
       res.status(404).json('Product not found');
     }
   },
+  create(req, res) {
+    const { name, price, quantity } = req.body;
+    const product = ProductModel;
+    product.Products.push({
+      id: '3',
+      name: name,
+      price: price,
+      quantity: quantity,
+    });
+    res.json(product.Products[product.Products.length - 1]);
+  },
 };
 export default Product;
