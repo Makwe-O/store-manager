@@ -18,12 +18,6 @@ const Product = {
     if (!found) {
       res.status(404).json('Product not found');
     }
-
-
-    // if (!product) {
-    //   return res.status(404).send({ message: 'product not found' });
-    // }
-    // return res.send(product);
   },
 };
 export default Product;
