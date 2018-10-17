@@ -33,3 +33,19 @@ describe('GET /products/:id', () => {
       });
   });
 });
+describe('POST /products', () => {
+  it('should return an object if valid input is passed', (done) => {
+    chai.request(server)
+      .post('/api/v1/products')
+      .send({
+        id: 3,
+        name: 'Caprisone',
+        price: 2200,
+        quantity: 20,
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+});

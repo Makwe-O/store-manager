@@ -28,7 +28,7 @@ const Product = {
       price: price,
       quantity: quantity,
     });
-    res.json(product.Products[product.Products.length - 1]);
+    res.json(product.Products[product.Products.length - 1]).status(201);
   },
 };
 export default Product;
