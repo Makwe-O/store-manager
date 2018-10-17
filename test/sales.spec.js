@@ -42,3 +42,20 @@ describe('GET /sales/:id', () => {
       });
   });
 });
+describe('POST /products', () => {
+  it('should return an object if valid input is passed', (done) => {
+    chai.request(server)
+      .post('/api/v1/product/sales')
+      .send({
+        id: 3,
+        productName: 'Caprisone',
+        price: 2200,
+        buyersName: 'Mr Mike',
+        amount: 22,
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+});
