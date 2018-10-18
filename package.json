@@ -4,10 +4,11 @@
   "description": "Store manager UI",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha",
-    "start": "nodemon index.js --exec babel-node",
-    "lint": "eslint server/src"
+    "test": "mocha **/_build/test/*.js",
+    "cover": "istanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "start": "node ./_build/index.js",
+    "build": "babel ./ -d ./_build --ignore node_modules"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/Makwe-O/store-manager#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "coveralls": "^3.0.2",
     "eslint": "^5.7.0",
