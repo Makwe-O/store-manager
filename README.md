@@ -4,6 +4,8 @@ This Store Manager Application is a web application that helps store owners mana
 [![Build Status](https://travis-ci.org/Makwe-O/store-manager.svg?branch=ft-get-specific-sale-record-endpoint-%23161282767)](https://travis-ci.org/Makwe-O/store-manager)
 [![Coverage Status](https://coveralls.io/repos/github/Makwe-O/store-manager/badge.svg?branch=Deploy-on-heroku)](https://coveralls.io/github/Makwe-O/store-manager?branch=Deploy-on-heroku)
 
+<a href="https://codeclimate.com/github/Makwe-O/store-manager/maintainability"><img src="https://api.codeclimate.com/v1/badges/6d93e8460979157b28a8/maintainability" /></a>
+
 ## App Demo
 The Demo of this app is currently being at https://store-appl.herokuapp.com/api/v1
 ## Getting Started
