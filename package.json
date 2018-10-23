@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc mocha  --compilers js:babel-register test/*.js",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register",
-    "coveralls": "nyc -report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "node ./_build/index.js",
     "build": "babel ./ -d ./_build --ignore node_modules"
   },
