@@ -20,15 +20,16 @@ const Product = {
     }
   },
   create(req, res) {
-    const { name, price, quantity } = req.body;
+    const { id, name, price, quantity } = req.body;
     const product = ProductModel;
     product.Products.push({
-      id: '3',
+      id,
       name,
       price,
       quantity,
     });
-    res.json(product.Products[product.Products.length - 1]).status(201);
+    res.json(product).send(201);
   },
+
 };
 export default Product;
