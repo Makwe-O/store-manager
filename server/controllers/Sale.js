@@ -25,6 +25,7 @@ const Sale = {
     const { id, productName, price, buyersName, amount } = req.body;
     const product = SaleModel;
     if (!productName || !price || !buyersName || !amount) {
+      console.log(productName, price, buyersName, amount)
       res.status(400).send({ message: 'Error, One or more feilds are blank' });
     } else {
       product.Sales.push({
