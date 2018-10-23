@@ -24,3 +24,6 @@ The following steps will get you up and running with the app on you local machin
 `$ npm run start`
 ### Run build
 `$ npm run build`
+## Testing
+The Store Manager leverages the power of `Mocha` and `Chai` to run the testing. `Mocha` being the testing suite and `Chai` which is an assertion library. To run test:   
+`npm run test`
