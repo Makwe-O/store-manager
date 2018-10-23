@@ -4,9 +4,9 @@
   "description": "Store manager UI",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/_build/test/*.js",
-    "cover": "istanbul cover _mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test": "nyc mocha  --compilers js:babel-register test/*.js",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register",
+    "coveralls": "nyc -report --reporter=text-lcov | coveralls",
     "start": "node ./_build/index.js",
     "build": "babel ./ -d ./_build --ignore node_modules"
   },
@@ -33,6 +33,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^13.1.0",
     "request": "^2.88.0",
     "should": "^13.2.3"
   },
