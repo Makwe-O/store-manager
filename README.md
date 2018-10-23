@@ -1,5 +1,15 @@
 # store-manager
-A store manager application
+This Store Manager Application is a web application that helps store owners manage sales and product inventory  records. This application is meant for use in a single store. 
+
 [![Build Status](https://travis-ci.org/Makwe-O/store-manager.svg?branch=ft-get-specific-sale-record-endpoint-%23161282767)](https://travis-ci.org/Makwe-O/store-manager)
 [![Coverage Status](https://coveralls.io/repos/github/Makwe-O/store-manager/badge.svg?branch=master)](https://coveralls.io/github/Makwe-O/store-manager?branch=master)
 
+## App Demo
+The Demo of this app is currently being at https://store-appl.herokuapp.com/api/v1
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+## Prerequisites
+Users of this platform need to have the following apps installed on their machine. Links are provided to download them if they are not currently installed   
+`node` [link](https://nodejs.org/en/download/)   
+`npm` [link](https://www.npmjs.com/get-npm)  
+## Installing
