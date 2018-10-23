@@ -13,3 +13,14 @@ Users of this platform need to have the following apps installed on their machin
 `node` [link](https://nodejs.org/en/download/)   
 `npm` [link](https://www.npmjs.com/get-npm)  
 ## Installing
+The following steps will get you up and running with the app on you local machine   
+### Clone the repo   
+`$ git clone https://github.com/Makwe-O/store-manager `  
+### Change directory
+`$ cd store-manager`
+### Install dependencies
+`$ npm install`
+### Run the server at localhost:3000
+`$ npm run start`
+### Run build
+`$ npm run build`
