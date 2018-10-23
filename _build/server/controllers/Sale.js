@@ -32,20 +32,25 @@ var Sale = {
   },
   create: function create(req, res) {
     var _req$body = req.body,
+        id = _req$body.id,
         productName = _req$body.productName,
         price = _req$body.price,
         buyersName = _req$body.buyersName,
         amount = _req$body.amount;
 
     var product = _Sale2.default;
-    product.Sales.push({
-      id: '3',
-      productName: productName,
-      price: price,
-      buyersName: buyersName,
-      amount: amount
-    });
-    res.json(product.Sales[product.Sales.length - 1]);
+    if (!productName || !price || !buyersName || !amount) {
+      res.status(400).send({ message: 'Error, One or more feilds are blank' });
+    } else {
+      product.Sales.push({
+        id: id,
+        productName: productName,
+        price: price,
+        buyersName: buyersName,
+        amount: amount
+      });
+      res.json(product.Sales[product.Sales.length - 1]);
+    }
   }
 };
 exports.default = Sale;

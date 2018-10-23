@@ -32,18 +32,19 @@ var Product = {
   },
   create: function create(req, res) {
     var _req$body = req.body,
+        id = _req$body.id,
         name = _req$body.name,
         price = _req$body.price,
         quantity = _req$body.quantity;
 
     var product = _Product2.default;
     product.Products.push({
-      id: '3',
+      id: id,
       name: name,
       price: price,
       quantity: quantity
     });
-    res.json(product.Products[product.Products.length - 1]).status(201);
+    res.json(product).send(201);
   }
 };
 exports.default = Product;
