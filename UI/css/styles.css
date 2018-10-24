@@ -242,7 +242,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 82vh;
+}
+.content-box--bg{
+    background-image: linear-gradient(to bottom, #e3e3e3, #e4c7e3, #fba4c3, #ff8582, #ed792b);
 }
 .text-center{
     text-align: center;
