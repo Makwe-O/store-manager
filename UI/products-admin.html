@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="dashboard-admin.html">Dashboard</a></li>
                 <li><a href="sales-attendants.html">Sales Attendants</a></li>
-                <li><a href="products-admin.html">Products</a></li>
+                <li><a class="active" href="products-admin.html">Products</a></li>
                 <li><a href="categories-admin.html">Categories</a></li>
                 <li><a href="login.html">Logout</a></li>
             </ul>
@@ -29,11 +29,19 @@
 
          <!--Main Content-->
         <main>
-            <div class="dashboard-header__title">
-                <h1>STORE ADMIN</h1>
-                <p>Tuesday, 9th October 2018 11:00</p>
+            <div class="dashboard-header__title__container">
+                <div class="dashboard-header__title">
+                    <h1>STORE ADMIN</h1>
+                    <p>Tuesday, 9th October 2018 11:00</p>
+                </div>
+                <div>
+                    <form action="#" class="search-form">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button class="btn-search" type="submit" value="Search">Search</button>
+                    </form>
+                </div>
             </div>
-            
+    
             <div class="card-grid">
                
                 <div class="card">
@@ -113,12 +121,13 @@
                 <form action="" id="create-sales-record">
                     <input type="text" class="" placeholder="Product Name"/>
                     <input type="file" id="input-image" accept="image/*" name="image">
-                    <input type="text" class="" placeholder="Price"/>
+                    <input type="number" class="" placeholder="Price"/>
                     <select>
                         <option value="" disabled selected>Select Category</option>
                         <option value="electronics">Electronics</option>
                         <option value="leisure">Leisure</option>
                     </select>
+                    <input type="number" class="" placeholder="Quantity in Inventory"/>
                     <input type="submit" class="btn btn__border--orange"  value="Add"/>
                 </form>
             </div>

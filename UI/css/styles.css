@@ -79,8 +79,22 @@ nav ul li{
 .text__color--orange{
     color:#ed792b;
 }
+.btn-search{
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 21px;
+    background:#ed792b;
+    color:#fff;
+    border:none;
+    padding:10px;
+    cursor: pointer;
+}
 .text__font--largest{
     font-size:42px
+}
+.search-form{
+    position: relative;
 }
 
 /*end Buttons*/
@@ -128,6 +142,10 @@ nav ul li{
 }
 .dashboard-header__title{
     margin-bottom:30px;
+}
+.dashboard-header__title__container{
+    display: flex;
+    justify-content: space-between;
 }
 
 main {
@@ -258,4 +276,10 @@ main {
 .footer-bottom{
     position:fixed;
     bottom:0;
+}
+
+@media only screen and (max-width:768px) {
+   .dashboard-header__title__container{
+       flex-direction:column;
+   }
 }
