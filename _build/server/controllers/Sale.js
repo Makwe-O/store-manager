@@ -50,7 +50,7 @@ var Sale = {
         buyersName: buyersName,
         amount: amount
       });
-      res.json(product.Sales[product.Sales.length - 1]);
+      res.status(201).send(product.Sales[product.Sales.length - 1]);
     }
   }
 };

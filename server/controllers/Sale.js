@@ -1,6 +1,4 @@
 import SaleModel from '../models/Sale';
-
-
 const Sale = {
   getAll(req, res) {
     const sales = SaleModel;
@@ -35,7 +33,7 @@ const Sale = {
         buyersName,
         amount,
       });
-      res.json(product.Sales[product.Sales.length - 1]);
+      res.status(201).send(product.Sales[product.Sales.length - 1]);
     }
   },
 
