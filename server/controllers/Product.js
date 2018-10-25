@@ -28,7 +28,7 @@ const Product = {
       price,
       quantity,
     });
-    res.json(product).send(201);
+    res.status(201).send(product);
   },
 
 };
