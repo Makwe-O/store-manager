@@ -6,6 +6,7 @@
     <title>Sales Record|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   </head>
   <body>
     <div id="wrapper">
@@ -29,42 +30,49 @@
 
         <!--Main Content-->
         <main>
-            <div class="dashboard-header__title">
-                <h1>STORE ATTENDANT</h1>
-                <p>Tuesday, 9th October 2018 11:00</p>
+            <div class="dashboard-header__title__container">
+                <div class="dashboard-header__title">
+                    <h1>STORE ATTENDANT</h1>
+                    <p>Tuesday, 9th October 2018 11:00</p>
+                </div>
+                <div class="dashboard-header__title__container-right">
+                    <form action="#" class="search-form">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button class="btn-search" type="submit" value="Search">Search</button>
+                    </form>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
             </div>
 
             <div class="table-grid">
                 <span class="grid-header"><strong>Order Id</strong></span>
                 <span class="grid-header"><strong>Prod. Name</strong></span>
                 <span class="grid-header"><strong>Buyers Name</strong></span>
+                <span class="grid-header"><strong>Price</strong></span>
                 <span class="grid-header"><strong>Amount</strong></span>
                 <span class="grid-header"><strong>Date</strong></span>
 
-                <span>10222</span>
-                <span>Product 1</span>
+                <span>101</span>
+                <span>Sony SPS 1</span>
                 <span>Micheal Jordan</span>
-                <span>24000</span>
+                <span>22000</span>
+                <span>1</span>
                 <span>13/07/12</span>
 
-                <span>10222</span>
-                <span>Product 1</span>
-                <span>Micheal Jordan</span>
-                <span>24000</span>
-                <span>13/07/12</span>
+                <span>102</span>
+                <span>Sony SPS 1</span>
+                <span>Segun Tito</span>
+                <span>22000</span>
+                <span>2</span>
+                <span>14/07/12</span>
 
-                <span>10222</span>
-                <span>Product 1</span>
-                <span>Micheal Jordan</span>
-                <span>24000</span>
-                <span>13/07/12</span>
+                <span>103</span>
+                <span>Sony SPS 3</span>
+                <span>Fisyo Dara</span>
+                <span>10000</span>
+                <span>1</span>
+                <span>14/07/12</span>
 
-                <span>10222</span>
-                <span>Product 1</span>
-                <span>Micheal Jordan</span>
-                <span>24000</span>
-                <span>13/07/12</span>
-                    
             </div>
         </main>
     </div>

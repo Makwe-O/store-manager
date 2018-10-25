@@ -6,6 +6,7 @@
     <title>Products|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   </head>
   <body>
     <div id="wrapper">
@@ -35,11 +36,12 @@
                     <h1>STORE ATTENDANT</h1>
                     <p>Tuesday, 9th October 2018 11:00</p>
                 </div>
-                <div>
+                <div class="dashboard-header__title__container-right">
                     <form action="#" class="search-form">
                         <input type="text" placeholder="Search.." name="search">
                         <button class="btn-search" type="submit" value="Search">Search</button>
                     </form>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
             
@@ -50,9 +52,10 @@
                     <div class="card__body ">
                         <h3 class="card__title">Sony SPS</h3>
                         <h4 class="card__title">#2000</h4>
-                        <a href="product.html" class="btn btn__color--dark btn__border--orange">View</a>
-                        <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
-                    
+                        <div class="card-btn">
+                            <a href="product.html" class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        </div>
                     </div>
                     </div>
                
@@ -61,20 +64,23 @@
                     <div class="card__body">
                         <h3 class="card__title">Sony SPS</h3>
                         <h4 class="card__title">#2000</h4>
-                        <a href="product.html"class="btn btn__color--dark btn__border--orange">View</a>
-                        <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        <div class="card-btn">
+                            <a href="product.html"class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
-                        <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
-                        <div class="card__body">
-                            <h3 class="card__title">Sony SPS</h3>
-                            <h4 class="card__title">#2000</h4>
-                            
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body">
+                        <h3 class="card__title">Sony SPS</h3>
+                        <h4 class="card__title">#2000</h4>
+                        <div class="card-btn">
                             <a href="product.html" class="btn btn__color--dark btn__border--orange">View</a>
                             <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
                         </div>
                     </div>
+                </div>
             </div>
             
         </main>
