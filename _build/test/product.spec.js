@@ -18,7 +18,7 @@ _chai2.default.use(_chaiHttp2.default);
 var expect = _chai2.default.expect;
 
 
-describe('Test for Products', function () {
+describe('Test for availability of Products', function () {
   it('should return 200', function (done) {
     _chai2.default.request(_index2.default).get('/api/v1/products').end(function (err, res) {
       expect(res.status).to.equal(200);

@@ -1,4 +1,5 @@
 import SaleModel from '../models/Sale';
+
 const Sale = {
   getAll(req, res) {
     const sales = SaleModel;
@@ -20,17 +21,19 @@ const Sale = {
     }
   },
   create(req, res) {
-    const { id, productName, price, buyersName, amount } = req.body;
+    const {
+ id, productName, price, buyersName, amount 
+} = req.body;
     const product = SaleModel;
 
-      product.Sales.push({
-        id,
-        productName,
-        price,
-        buyersName,
-        amount,
-      });
-      res.status(201).send(product.Sales[product.Sales.length - 1]);
-    },
-  };
-  export default Sale;
+    product.Sales.push({
+      id,
+      productName,
+      price,
+      buyersName,
+      amount,
+    });
+    res.status(201).send(product.Sales[product.Sales.length - 1]);
+  },
+};
+export default Sale;

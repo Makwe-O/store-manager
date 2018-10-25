@@ -5,7 +5,7 @@ import server from '../index';
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('Test for Products', () => {
+describe('Test for availability of Products', () => {
   it('should return 200', (done) => {
     chai.request(server)
       .get('/api/v1/products')
