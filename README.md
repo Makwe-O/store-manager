@@ -29,3 +29,5 @@ The following steps will get you up and running with the app on you local machin
 ## Testing
 The Store Manager leverages the power of `Mocha` and `Chai` to run the testing. `Mocha` being the testing suite and `Chai` which is an assertion library. To run test:   
 `npm run test`
+## Deployment
+App is deployed at https://store-appl.herokuapp.com/api/v1/
