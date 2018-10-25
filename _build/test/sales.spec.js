@@ -60,4 +60,33 @@ describe('POST /sales', function () {
       done();
     });
   });
+  it('should return status 201 when sale is created', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      productName: 'Caprisone',
+      price: 2200,
+      buyersName: 'Mr Mike',
+      amount: 22
+    }).end(function (err, res) {
+      expect(res.status).to.equal(201);
+      done();
+    });
+  });
+  it('should return status 400 when no value is passed', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({}).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      done();
+    });
+  });
+  it('Price and Amount should equal number ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      productName: 'Caprisone',
+      price: 2200,
+      buyersName: 'Mr Mike',
+      amount: 22
+    }).end(function (err, res) {
+      expect(res.body.price).to.be.a('number');
+      expect(res.body.amount).to.be.a('number');
+      done();
+    });
+  });
 });

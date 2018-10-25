@@ -44,7 +44,7 @@ var Product = {
       price: price,
       quantity: quantity
     });
-    res.json(product).send(201);
+    res.status(201).send(product);
   }
 };
 exports.default = Product;

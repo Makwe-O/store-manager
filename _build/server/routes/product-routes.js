@@ -12,23 +12,19 @@ var _Product = require('../controllers/Product');
 
 var _Product2 = _interopRequireDefault(_Product);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _validate = require('../middleware/validate');
 
-function ensureToken(req, res, next) {
-  var bearerHeader = req.headers.authorization;
-  if (typeof bearerHeader !== 'undefined') {
-    var bearer = bearerHeader.split(' ');
-    var bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    res.status(403).send({ message: 'You do not have Permission' });
-  }
-}
+var _validate2 = _interopRequireDefault(_validate);
+
+var _auth = require('../middleware/auth');
+
+var _auth2 = _interopRequireDefault(_auth);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
 router.get('/', _Product2.default.getAll);
 router.get('/:id', _Product2.default.getOne);
-router.post('/', ensureToken, _Product2.default.create);
+router.post('/', _auth2.default.ensureToken, _validate2.default.emptyValueProduct, _Product2.default.create);
 
 exports.default = router;

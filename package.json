@@ -8,7 +8,8 @@
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "node ./_build/index.js",
-    "build": "babel ./ -d ./_build --ignore node_modules"
+    "build": "npm run clean && babel ./ -d ./_build --ignore node_modules",
+    "clean": "rm -rf _build"
   },
   "repository": {
     "type": "git",

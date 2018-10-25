@@ -1,6 +1,5 @@
 import SaleModel from '../models/Sale';
 
-
 const Sale = {
   getAll(req, res) {
     const sales = SaleModel;
@@ -22,23 +21,19 @@ const Sale = {
     }
   },
   create(req, res) {
-    const { id, productName, price, buyersName, amount } = req.body;
+    const {
+ id, productName, price, buyersName, amount 
+} = req.body;
     const product = SaleModel;
-    if (!productName || !price || !buyersName || !amount) {
-      console.log(productName, price, buyersName, amount)
-      res.status(400).send({ message: 'Error, One or more feilds are blank' });
-    } else {
-      product.Sales.push({
-        id,
-        productName,
-        price,
-        buyersName,
-        amount,
-      });
-      res.json(product.Sales[product.Sales.length - 1]);
-    }
+
+    product.Sales.push({
+      id,
+      productName,
+      price,
+      buyersName,
+      amount,
+    });
+    res.status(201).send(product.Sales[product.Sales.length - 1]);
   },
-
-
 };
 export default Sale;
