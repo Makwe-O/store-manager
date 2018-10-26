@@ -44,6 +44,10 @@ const validate = {
       res.status(400).send({ message: 'Quantity is blank' });
       return;
     }
+    if (typeof (req.body.quantity) !== 'number') {
+      res.status(400).send({ message: 'Quantity is not a number' });
+      return;
+    }
     next();
   },
 
