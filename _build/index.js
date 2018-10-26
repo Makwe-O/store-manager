@@ -20,23 +20,36 @@ var _saleRoutes = require('./server/routes/sale-routes');
 
 var _saleRoutes2 = _interopRequireDefault(_saleRoutes);
 
+var _userRoutes = require('./server/routes/user-routes');
+
+var _userRoutes2 = _interopRequireDefault(_userRoutes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
 app.use(_express2.default.json());
+// Routes to handle requests
 app.use('/api/v1/products', _productRoutes2.default);
 app.use('/api/v1/sales', _saleRoutes2.default);
+app.use('/api/v1/auth', _userRoutes2.default);
 
 app.get('/api/v1', function (req, res) {
   res.send({ message: 'Welcome to store manager' });
 });
-app.post('/api/v1/login', function (req, res) {
-  var admin = { id: 3 };
-  var token = _jsonwebtoken2.default.sign({ admin: admin }, 'my_secret_key');
+
+// Handle unknown routes
+app.use(function (req, res, next) {
+  var error = new Error('Not Found');
+  error.status = 404;
+  next(error);
+});
+app.use(function (error, req, res, next) {
+  res.status(error.status || 500);
   res.json({
-    token: token
+    message: error.message
   });
 });
+
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
   console.log('App listening on port ' + port + '!');

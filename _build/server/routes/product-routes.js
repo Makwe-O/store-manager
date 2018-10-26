@@ -23,8 +23,10 @@ var _auth2 = _interopRequireDefault(_auth);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-router.get('/', _Product2.default.getAll);
-router.get('/:id', _Product2.default.getOne);
-router.post('/', _auth2.default.ensureToken, _validate2.default.emptyValueProduct, _Product2.default.create);
+router.get('/', _Product2.default.getAllProduct);
+router.get('/:id', _Product2.default.getOneProduct);
+router.post('/', _auth2.default.ensureToken, _validate2.default.emptyValueProduct, _Product2.default.createProduct);
+router.patch('/:id', _Product2.default.modifyProduct);
+router.delete('/:id', _Product2.default.deleteProduct);
 
 exports.default = router;

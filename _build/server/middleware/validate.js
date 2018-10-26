@@ -47,6 +47,7 @@ var validate = {
     }
     if (!req.body.quantity) {
       res.status(400).send({ message: 'Quantity is blank' });
+      return;
     }
     next();
   }
