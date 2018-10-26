@@ -1,25 +1,25 @@
 import ProductModel from '../models/Product';
 
 const Product = {
-  getAll(req, res) {
+  getAllProduct(req, res) {
     const products = ProductModel;
-    return res.send(products);
+    return res.status(200).send(products);
   },
-  getOne(req, res) {
+  getOneProduct(req, res) {
     const { id } = req.params;
     let found = false;
     const product = ProductModel;
     product.Products.forEach((item) => {
       if (item.id === id) {
         found = true;
-        return res.json(item);
+        return res.status(200).json(item);
       }
     });
     if (!found) {
       res.status(404).json('Product not found');
     }
   },
-  create(req, res) {
+  createProduct(req, res) {
     const { id, name, price, quantity } = req.body;
     const product = ProductModel;
     product.Products.push({
@@ -30,6 +30,15 @@ const Product = {
     });
     res.status(201).send(product);
   },
-
+  modifyProduct(req, res) {
+    res.status(200).send({
+      message: 'Updated product',
+    });
+  },
+  deleteProduct(req, res) {
+    res.status(200).send({
+      message: 'Product deleted',
+    });
+  },
 };
 export default Product;

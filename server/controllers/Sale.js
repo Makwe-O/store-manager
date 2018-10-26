@@ -22,8 +22,8 @@ const Sale = {
   },
   create(req, res) {
     const {
- id, productName, price, buyersName, amount 
-} = req.body;
+      id, productName, price, buyersName, amount,
+    } = req.body;
     const product = SaleModel;
 
     product.Sales.push({

@@ -4,8 +4,10 @@ import Validate from '../middleware/validate';
 import Authenticate from '../middleware/auth';
 
 const router = express.Router();
-router.get('/', Product.getAll);
-router.get('/:id', Product.getOne);
-router.post('/', Authenticate.ensureToken, Validate.emptyValueProduct, Product.create);
+router.get('/', Product.getAllProduct);
+router.get('/:id', Product.getOneProduct);
+router.post('/', Authenticate.ensureToken, Validate.emptyValueProduct, Product.createProduct);
+router.patch('/:id', Product.modifyProduct);
+router.delete('/:id', Product.deleteProduct);
 
 export default router;
