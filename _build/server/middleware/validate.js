@@ -1,6 +1,11 @@
+'use strict';
 
-const validate = {
-  emptyValueSales(req, res, next) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var validate = {
+  emptyValueSales: function emptyValueSales(req, res, next) {
     if (!req.body.product_name) {
       res.status(400).send({ message: 'Product name is blank' });
       return;
@@ -9,7 +14,7 @@ const validate = {
       res.status(400).send({ message: 'Price is blank' });
       return;
     }
-    if (typeof (req.body.price) !== 'number') {
+    if (typeof req.body.price !== 'number') {
       res.status(400).send({ message: 'Price is not a number' });
       return;
     }
@@ -21,13 +26,13 @@ const validate = {
       res.status(400).send({ message: 'Amount is blank' });
       return;
     }
-    if (typeof (req.body.amount) !== 'number') {
+    if (typeof req.body.amount !== 'number') {
       res.status(400).send({ message: 'Amount is not a number' });
       return;
     }
     next();
   },
-  emptyValueProduct(req, res, next) {
+  emptyValueProduct: function emptyValueProduct(req, res, next) {
     if (!req.body.name) {
       res.status(400).send({ message: 'Name is blank' });
       return;
@@ -36,7 +41,7 @@ const validate = {
       res.status(400).send({ message: 'Price is blank' });
       return;
     }
-    if (typeof (req.body.price) !== 'number') {
+    if (typeof req.body.price !== 'number') {
       res.status(400).send({ message: 'Price is not a number' });
       return;
     }
@@ -44,13 +49,11 @@ const validate = {
       res.status(400).send({ message: 'Quantity is blank' });
       return;
     }
-    if (typeof (req.body.quantity) !== 'number') {
+    if (typeof req.body.quantity !== 'number') {
       res.status(400).send({ message: 'Quantity is not a number' });
       return;
     }
     next();
-  },
-
-
+  }
 };
-export default validate;
+exports.default = validate;

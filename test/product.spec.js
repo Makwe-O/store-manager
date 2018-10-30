@@ -18,7 +18,7 @@ describe('Test for availability of Products', () => {
 describe('GET /products/:id', () => {
   it('Endpoint should return 404 if an invalid id is passed', (done) => {
     chai.request(server)
-      .get(`/api/v1/products/${9}`)
+      .get(`/api/v1/products/${90}`)
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done(err);
@@ -38,7 +38,6 @@ describe('POST /products', () => {
     chai.request(server)
       .post('/api/v1/products')
       .send({
-        id: 3,
         name: 'Caprisone',
         price: 2200,
         quantity: 20,
