@@ -19,13 +19,14 @@ app.get('/api/v1', (req, res) => {
 
 // Handle unknown routes
 app.use((req, res, next) => {
-  const error = new Error('Not Found');
+  const error = new Error('Url does not currently exist');
   error.status = 404;
   next(error);
 });
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
+    Success: "False",
     message: error.message,
   });
 });

@@ -29,7 +29,7 @@ describe('GET /sales', function () {
 
 describe('GET /sales/:id', function () {
   it('Endpoint should return 404 if an invalid id is passed', function (done) {
-    _chai2.default.request(_index2.default).get('/api/v1/sales/' + 7).end(function (err, res) {
+    _chai2.default.request(_index2.default).get('/api/v1/sales/' + 70).end(function (err, res) {
       expect(res.status).to.equal(404);
       done(err);
     });
@@ -50,10 +50,9 @@ describe('GET /sales/:id', function () {
 describe('POST /sales', function () {
   it('should return an object if valid input is passed', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/product/sales').send({
-      id: 3,
-      productName: 'Caprisone',
-      price: 2200,
-      buyersName: 'Mr Mike',
+      product_name: "Sony Sps",
+      buyers_name: "Mr. Mike",
+      price: 30,
       amount: 22
     }).end(function (err, res) {
       expect(res.body).to.be.an('object');
@@ -62,9 +61,9 @@ describe('POST /sales', function () {
   });
   it('should return status 201 when sale is created', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      productName: 'Caprisone',
+      product_name: 'Caprisone',
+      buyers_name: 'Mr Mike',
       price: 2200,
-      buyersName: 'Mr Mike',
       amount: 22
     }).end(function (err, res) {
       expect(res.status).to.equal(201);
@@ -79,9 +78,9 @@ describe('POST /sales', function () {
   });
   it('Price and Amount should equal number ', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      productName: 'Caprisone',
+      product_name: 'Caprisone',
       price: 2200,
-      buyersName: 'Mr Mike',
+      buyers_name: 'Mr Mike',
       amount: 22
     }).end(function (err, res) {
       expect(res.body.price).to.be.a('number');

@@ -4,50 +4,51 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Sale = require('../models/Sale');
+var _pg = require('pg');
 
-var _Sale2 = _interopRequireDefault(_Sale);
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+_dotenv2.default.config();
+
+var pool = new _pg.Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
 var Sale = {
-  getAll: function getAll(req, res) {
-    var sales = _Sale2.default;
-    return res.send(sales);
+  getAllSalesRecord: function getAllSalesRecord(request, response, next) {
+    pool.query('SELECT * FROM sales_record ORDER BY sales_record_id ', function (err, res) {
+      if (err) return next(err);
+      response.status(200).send(res.rows);
+    });
   },
-  getOne: function getOne(req, res) {
-    var id = req.params.id;
+  getOneSalesRecord: function getOneSalesRecord(request, response, next) {
+    var id = request.params.id;
 
     var found = false;
-    var product = _Sale2.default;
-    product.Sales.forEach(function (item) {
-      if (item.id === id) {
+    pool.query('SELECT * FROM sales_record WHERE sales_record_id = $1', [id], function (err, res) {
+      if (err) return next(err);
+      if (res.rowCount !== 0) {
         found = true;
-        return res.json(item);
+        return response.status(200).json(res.rows[0]);
       }
+      if (!found) return response.status(404).send({ message: 'No such record' });
     });
-    if (!found) {
-      res.status(404).json('Sales record not found');
-    }
   },
-  create: function create(req, res) {
-    var _req$body = req.body,
-        id = _req$body.id,
-        productName = _req$body.productName,
-        price = _req$body.price,
-        buyersName = _req$body.buyersName,
-        amount = _req$body.amount;
+  createSalesRecord: function createSalesRecord(request, response, next) {
+    var _request$body = request.body,
+        product_name = _request$body.product_name,
+        buyers_name = _request$body.buyers_name,
+        price = _request$body.price,
+        amount = _request$body.amount;
 
-    var product = _Sale2.default;
-
-    product.Sales.push({
-      id: id,
-      productName: productName,
-      price: price,
-      buyersName: buyersName,
-      amount: amount
+    pool.query('INSERT INTO sales_record(product_name, buyers_name, price, amount) VALUES($1, $2, $3, $4)', [product_name, buyers_name, price, amount], function (err, res) {
+      if (err) return next(err);
+      response.status(201).send({ message: 'Sales Record Created!' });
     });
-    res.status(201).send(product.Sales[product.Sales.length - 1]);
   }
 };
 exports.default = Sale;

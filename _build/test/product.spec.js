@@ -28,7 +28,7 @@ describe('Test for availability of Products', function () {
 });
 describe('GET /products/:id', function () {
   it('Endpoint should return 404 if an invalid id is passed', function (done) {
-    _chai2.default.request(_index2.default).get('/api/v1/products/' + 9).end(function (err, res) {
+    _chai2.default.request(_index2.default).get('/api/v1/products/' + 90).end(function (err, res) {
       expect(res.status).to.equal(404);
       done(err);
     });
@@ -43,7 +43,6 @@ describe('GET /products/:id', function () {
 describe('POST /products', function () {
   it('should return an object if valid input is passed', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/products').send({
-      id: 3,
       name: 'Caprisone',
       price: 2200,
       quantity: 20

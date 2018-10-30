@@ -19,7 +19,7 @@ describe('GET /sales', () => {
 describe('GET /sales/:id', () => {
   it('Endpoint should return 404 if an invalid id is passed', (done) => {
     chai.request(server)
-      .get(`/api/v1/sales/${7}`)
+      .get(`/api/v1/sales/${70}`)
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done(err);
@@ -47,11 +47,10 @@ describe('POST /sales', () => {
     chai.request(server)
       .post('/api/v1/product/sales')
       .send({
-        id: 3,
-        productName: 'Caprisone',
-        price: 2200,
-        buyersName: 'Mr Mike',
-        amount: 22,
+        product_name: "Sony Sps",
+        buyers_name: "Mr. Mike",
+        price: 30,
+        amount: 22
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -62,9 +61,9 @@ describe('POST /sales', () => {
     chai.request(server)
       .post('/api/v1/sales')
       .send({
-        productName: 'Caprisone',
+        product_name: 'Caprisone',
+        buyers_name: 'Mr Mike',
         price: 2200,
-        buyersName: 'Mr Mike',
         amount: 22,
       })
       .end((err, res) => {
@@ -85,9 +84,9 @@ describe('POST /sales', () => {
     chai.request(server)
       .post('/api/v1/sales')
       .send({
-        productName: 'Caprisone',
+        product_name: 'Caprisone',
         price: 2200,
-        buyersName: 'Mr Mike',
+        buyers_name: 'Mr Mike',
         amount: 22,
       })
       .end((err, res) => {

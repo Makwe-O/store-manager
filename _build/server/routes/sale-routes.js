@@ -19,8 +19,8 @@ var _validate2 = _interopRequireDefault(_validate);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-router.get('/', _Sale2.default.getAll);
-router.get('/:id', _Sale2.default.getOne);
-router.post('/', _validate2.default.emptyValueSales, _Sale2.default.create);
+router.get('/', _Sale2.default.getAllSalesRecord);
+router.get('/:id', _Sale2.default.getOneSalesRecord);
+router.post('/', _validate2.default.emptyValueSales, _Sale2.default.createSalesRecord);
 
 exports.default = router;

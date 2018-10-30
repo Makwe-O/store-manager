@@ -19,6 +19,6 @@ var _validate2 = _interopRequireDefault(_validate);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-router.post('/', _User2.default.login);
-router.post('/', _User2.default.signup);
+router.post('/login', _User2.default.login);
+router.post('/signup', _User2.default.signup);
 exports.default = router;

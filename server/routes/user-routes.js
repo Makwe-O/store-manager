@@ -3,6 +3,6 @@ import User from '../controllers/User';
 import Validate from '../middleware/validate';
 
 const router = express.Router();
-router.post('/', User.login);
-router.post('/', User.signup);
+router.post('/login', User.login);
+router.post('/signup', User.signup);
 export default router;

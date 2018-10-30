@@ -1,7 +1,7 @@
 
 const validate = {
   emptyValueSales(req, res, next) {
-    if (!req.body.productName) {
+    if (!req.body.product_name) {
       res.status(400).send({ message: 'Product name is blank' });
       return;
     }
@@ -13,7 +13,7 @@ const validate = {
       res.status(400).send({ message: 'Price is not a number' });
       return;
     }
-    if (!req.body.buyersName) {
+    if (!req.body.buyers_name) {
       res.status(400).send({ message: 'Buyers name is blank' });
       return;
     }
