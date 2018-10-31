@@ -2,5 +2,5 @@ node_modules
 .coveralls.yml
 .nyc_output
 .env
-_build
+
 .vscode
