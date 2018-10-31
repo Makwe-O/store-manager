@@ -1,15 +1,11 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
-
-
 dotenv.config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-
-
 
 const Sale = {
   getAllSalesRecord(request, response, next) {
@@ -32,12 +28,14 @@ const Sale = {
     });
   },
   createSalesRecord(request, response, next) {
-    const {product_name, buyers_name, price, amount} = request.body;
-      pool.query('INSERT INTO sales_record(product_name, buyers_name, price, amount) VALUES($1, $2, $3, $4)', [product_name, buyers_name, price, amount], (err, res) => {
-        if (err) return next(err);
-        response.status(201).send({ message: 'Sales Record Created!' });
+    const { product_name, buyers_name, price, amount } = request.body;
+    pool.query('INSERT INTO sales_record(product_name, buyers_name, price, amount) VALUES($1, $2, $3, $4)', [product_name, buyers_name, price, amount], (err, res) => {
+      if (err) return next(err);
+      response.status(201).send({
+        message: 'Sales Record Created!',
+        sale: res.rows,
       });
-     
-    },
+    });
+  },
 };
 export default Sale;

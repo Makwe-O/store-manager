@@ -1,5 +1,5 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -14,7 +14,7 @@ pool.on('connect', () => {
 /**
  * Create Tables
  */
-const createTables = () => {
+export const createTables = () => {
   pool.query(
     `CREATE TABLE IF NOT EXISTS
       products(
@@ -22,19 +22,22 @@ const createTables = () => {
         name character varying(50) NOT NULL,
         price INT NOT NULL,
         quantity INT NOT NULL
-      )`);
-    
-  pool.query(  
+      )`,
+  );
+
+  pool.query(
     `CREATE TABLE IF NOT EXISTS
       users(
         user_id serial PRIMARY KEY,
         name character varying(50) NOT NULL,
         email character varying(100) NOT NULL,
+        role character varying(50) NOT NULL,
         password character varying(100) NOT NULL
-      )`);
+      )`,
+  );
 
-      pool.query(
-        `CREATE TABLE IF NOT EXISTS
+  pool.query(
+    `CREATE TABLE IF NOT EXISTS
           sales_record(
             sales_record_id serial PRIMARY KEY,
             product_name character varying(100) NOT NULL,
@@ -42,33 +45,22 @@ const createTables = () => {
             price INT NOT NULL,
             amount INT NOT NULL,
             date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-          )`);
-  
-    // pool.query(queryTextProducts)
-    //   .then((res) => {
-    //     console.log(res);
-    //     pool.end();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     pool.end();
-    //   });
-    // pool.query(queryTextUsers)
-    //   .then((res) => {
-    //     console.log(res);
-    //     pool.end();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     pool.end();
-    //   });
-}
+          )`,
+  );
+  pool.query(
+    `CREATE TABLE IF NOT EXISTS
+          categories(
+            category_id serial PRIMARY KEY,
+            category_name character varying(100) NOT NULL
+          )`,
+  );
+};
 
 /**
  * Drop Tables
  */
-const dropTables = () => {
-  const queryTextProducts = 'DROP TABLE IF EXISTS products, sales_record, users';
+export const dropTables = () => {
+  const queryTextProducts = 'DROP TABLE IF EXISTS products, sales_record, users, categories';
   pool.query(queryTextProducts)
     .then((res) => {
       console.log(res);
@@ -78,16 +70,10 @@ const dropTables = () => {
       console.log(err);
       pool.end();
     });
-}
+};
 
 pool.on('remove', () => {
   console.log('client removed');
   process.exit(0);
 });
-
-module.exports = {
-  createTables,
-  dropTables,
-};
-
 require('make-runnable');

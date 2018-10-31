@@ -2,7 +2,6 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 
-
 dotenv.config();
 
 const pool = new Pool({
@@ -15,8 +14,8 @@ const Product = {
     pool.query('SELECT * FROM products ORDER BY id ', (err, res) => {
       if (err) return next(err);
       response.status(200).send({
-        message:"true",
-        products: res.rows
+        success: 'true',
+        products: res.rows,
       });
     });
   },
@@ -27,11 +26,16 @@ const Product = {
       if (err) return next(err);
       if ((res.rowCount !== 0)) {
         found = true;
-        return response.status(200).json(res.rows[0]);
+        return response.status(200).json({
+          success: 'true',
+          product: res.rows[0],
+        });
       }
-      if (!found) return response.status(404).send({ message: 'No such record' });
+      if (!found) {return response.status(404).send({ 
+        success: 'False',
+        message: 'No such record',
+      });}
     });
-
   },
   createProduct(request, response, next) {
     const {
@@ -41,7 +45,6 @@ const Product = {
       if (err) return next(err);
       response.status(201).send({ message: 'Product Created!' });
     });
-   
   },
   modifyProduct(request, response, next) {
     const { id } = request.params;
@@ -57,18 +60,12 @@ const Product = {
     });
 
     feilds.forEach((feild, index) => {
-      pool.query( `Update products SET ${feild}=($1) WHERE id=($2)`, [request.body[feild], id], (err, res) => {
-          if (err) return next(err);
+      pool.query(`Update products SET ${feild}=($1) WHERE id=($2)`, [request.body[feild], id], (err, res) => {
+        if (err) return next(err);
 
-          if (index === feilds.length - 1)response.status(200).send({ message: 'Product Updated successfully' });
-        },
-      );
+        if (index === feilds.length - 1)response.status(200).send({ message: 'Product Updated successfully' });
+      },);
     });
-
-
-    // res.status(200).send({
-    //   message: 'Updated product',
-    // });
   },
 
 
@@ -78,9 +75,6 @@ const Product = {
       if (err) return next(err);
       response.status(200).send({ message: 'Product Deleted Successfully' });
     });
-    // res.status(200).send({
-    //   message: 'Product deleted',
-    // });
   },
 };
 export default Product;
