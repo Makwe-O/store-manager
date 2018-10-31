@@ -19,7 +19,7 @@ describe('GET /sales', () => {
 describe('GET /sales/:id', () => {
   it('Endpoint should return 404 if an invalid id is passed', (done) => {
     chai.request(server)
-      .get(`/api/v1/sales/${70}`)
+      .get(`/api/v1/sales/${100}`)
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done(err);
@@ -47,10 +47,10 @@ describe('POST /sales', () => {
     chai.request(server)
       .post('/api/v1/product/sales')
       .send({
-        product_name: "Sony Sps",
-        buyers_name: "Mr. Mike",
+        product_name: 'Sony Sps',
+        buyers_name: 'Mr. Mike',
         price: 30,
-        amount: 22
+        amount: 22,
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -80,20 +80,60 @@ describe('POST /sales', () => {
         done();
       });
   });
-  it('Price and Amount should equal number ', (done) => {
+  it('Shoud return status of 400 if Productname is missing ', (done) => {
+    chai.request(server)
+      .post('/api/v1/sales')
+      .send({
+        // product_name: 'Caprisone',
+        price: 2200,
+        buyers_name: 'Mr Mike',
+        amount: 22,
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('Shoud return status of 400 if price is missing ', (done) => {
+    chai.request(server)
+      .post('/api/v1/sales')
+      .send({
+        product_name: 'Caprisone',
+        // price: 2200,
+        buyers_name: 'Mr Mike',
+        amount: 22,
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('Shoud return status of 400 if buyers name is missing ', (done) => {
+    chai.request(server)
+      .post('/api/v1/sales')
+      .send({
+        product_name: 'Caprisone',
+        price: 2200,
+        // buyers_name: 'Mr Mike',
+        amount: 22,
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('Shoud return status of 400 if amount is missing ', (done) => {
     chai.request(server)
       .post('/api/v1/sales')
       .send({
         product_name: 'Caprisone',
         price: 2200,
         buyers_name: 'Mr Mike',
-        amount: 22,
+        // amount: 22,
       })
       .end((err, res) => {
-        expect(res.body.price).to.be.a('number');
-        expect(res.body.amount).to.be.a('number');
+        expect(res.status).to.equal(400);
         done();
       });
   });
-  
 });
