@@ -16,32 +16,7 @@ describe('GET /sales', () => {
   });
 });
 
-describe('GET /sales/:id', () => {
-  it('Endpoint should return 404 if an invalid id is passed', (done) => {
-    chai.request(server)
-      .get(`/api/v1/sales/${100}`)
-      .end((err, res) => {
-        expect(res.status).to.equal(404);
-        done(err);
-      });
-  });
-  it('should be an object', (done) => {
-    chai.request(server)
-      .get(`/api/v1/sales/${1}`)
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        done(err);
-      });
-  });
-  it('should return a sale record if id is valid', (done) => {
-    chai.request(server)
-      .get(`/api/v1/sales/${1}`)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        done(err);
-      });
-  });
-});
+
 describe('POST /sales', () => {
   it('should return an object if valid input is passed', (done) => {
     chai.request(server)
@@ -134,6 +109,32 @@ describe('POST /sales', () => {
       .end((err, res) => {
         expect(res.status).to.equal(400);
         done();
+      });
+  });
+});
+describe('GET /sales/:id', () => {
+  it('Endpoint should return 404 if an invalid id is passed', (done) => {
+    chai.request(server)
+      .get(`/api/v1/sales/${100}`)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done(err);
+      });
+  });
+  it('should be an object', (done) => {
+    chai.request(server)
+      .get(`/api/v1/sales/${1}`)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done(err);
+      });
+  });
+  it('should return a sale record if id is valid', (done) => {
+    chai.request(server)
+      .get(`/api/v1/sales/${1}`)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done(err);
       });
   });
 });
