@@ -45,7 +45,7 @@ const Category = {
       if (err) return next(err);
       if ((res.rowCount !== 0)) {
         return response.status(409).json({
-          success: 'false',
+          success: 'False',
           message: 'Category already exists',
         });
       }
