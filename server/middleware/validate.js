@@ -51,21 +51,21 @@ const validate = {
     next();
   },
   emptyValueCategory(req, res, next) {
-    if (req.body.categoryName) {
+    if (req.body.category_name) {
       next();
     } else {
       res.status(400).send({ message: 'Category name cannot be blank' });
     }
   },
-  checkEmail(req, res, next) {
-    if (req.body.email == `/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/`) {
-      next();
-    } else {
-      res.status(400).json({
-        message: 'Wrong pattern for email',
-      });
-    }
-  },
+  // checkEmail(req, res, next) {
+  //   if (req.body.email == `/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/`) {
+  //     next();
+  //   } else {
+  //     res.status(400).json({
+  //       message: 'Wrong pattern for email',
+  //     });
+  //   }
+  // },
   checkRoleAdmin(req, res, next) {
     if (req.token.role === 'Admin') {
       next();
