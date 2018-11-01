@@ -4,10 +4,10 @@
   "description": "Store manager UI",
   "main": "index.js",
   "scripts": {
-    "test": "npm run drop-db && npm run create-db && nyc mocha --timeout 10000  --compilers js:babel-register test/*.js",
+    "test": "npm run build && npm run drop-db && npm run create-db && nyc mocha --timeout 10000  --compilers js:babel-register test/*.js",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "start": "npm run build && node ./_build/index.js",
+    "start": "npm run create-db && npm run build && node ./_build/index.js",
     "build": "npm run clean && babel ./ -d ./_build --ignore node_modules",
     "clean": "rm -rf _build",
     "start-dev": "nodemon npm run start",

@@ -26,7 +26,7 @@ var router = _express2.default.Router();
 router.get('/', _Category2.default.getAllCategory);
 router.get('/:id', _Category2.default.getOneCategory);
 router.post('/', _auth2.default.ensureToken, _validate2.default.emptyValueCategory, _Category2.default.createCategory);
-router.put('/:id', _auth2.default.ensureToken, _Category2.default.modifyCategory);
+router.put('/:id', _auth2.default.ensureToken, _validate2.default.emptyValueCategory, _Category2.default.modifyCategory);
 router.delete('/:id', _auth2.default.ensureToken, _Category2.default.deleteCategory);
 
 exports.default = router;
