@@ -40,8 +40,8 @@ const Category = {
     });
   },
   createCategory(request, response, next) {
-    const { categoryName } = request.body;
-    pool.query('SELECT * FROM categories WHERE category_name= $1', [categoryName], (err, res) => {
+    const { category_name } = request.body;
+    pool.query('SELECT * FROM categories WHERE category_name= $1', [category_name], (err, res) => {
       if (err) return next(err);
       if ((res.rowCount !== 0)) {
         return response.status(409).json({
@@ -49,7 +49,7 @@ const Category = {
           message: 'Category already exists',
         });
       }
-      pool.query('INSERT INTO categories(category_name) VALUES($1)', [categoryName], (err, res) => {
+      pool.query('INSERT INTO categories(category_name) VALUES($1)', [category_name], (err, res) => {
         if (err) return next(err);
         return response.status(201).json({
           success: 'true',
@@ -61,7 +61,7 @@ const Category = {
   modifyCategory(request, response, next) {
     const { id } = request.params;
 
-    const { category_name } = request.body;
+    const { categoryName } = request.body;
     const keys = ['category_name'];
 
     const feilds = [];

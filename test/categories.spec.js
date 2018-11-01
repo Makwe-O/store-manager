@@ -43,14 +43,15 @@ describe('category', () => {
           done();
         });
     });
-    it('should return status of 201 when product is created', (done) => {
+    it('should return status of 201 when category is created', (done) => {
       chai.request(server)
         .post('/api/v1/categories')
         .send({
-          categoryName: 'foods',
+          category_name: 'foods',
         })
         .set('Authorization', `Bearer ${adminToken}`)
         .end((err, res) => {
+          console.log("@@@@@@@@@@", adminToken);
           expect(res.status).to.equal(201);
           done();
         });
@@ -63,7 +64,7 @@ describe('category', () => {
         })
         .set('Authorization', `Bearer ${adminToken}`)
         .end((err, res) => {
-          console.log("@@@@@@@@@@", adminToken);
+          
           expect(res.status).to.equal(400);
           done();
         });
@@ -105,7 +106,7 @@ describe('category', () => {
       chai.request(server)
         .put(`/api/v1/categories/${2}`)
         .send({
-          category_name: 'Fishing',
+          categoryName: 'Fishing',
         })
         .end((err, res) => {
           expect(res.status).to.equal(403);

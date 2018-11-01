@@ -31,10 +31,12 @@ const Product = {
           product: res.rows[0],
         });
       }
-      if (!found) {return response.status(404).send({ 
-        success: 'False',
-        message: 'No such record',
-      });}
+      if (!found) {
+        return response.status(404).send({
+          success: 'False',
+          message: 'No such record',
+        });
+      }
     });
   },
   createProduct(request, response, next) {
@@ -64,7 +66,7 @@ const Product = {
         if (err) return next(err);
 
         if (index === feilds.length - 1)response.status(200).send({ message: 'Product Updated successfully' });
-      },);
+      });
     });
   },
 
