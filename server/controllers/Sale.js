@@ -1,39 +1,41 @@
-import SaleModel from '../models/Sale';
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 const Sale = {
-  getAll(req, res) {
-    const sales = SaleModel;
-    return res.send(sales);
+  getAllSalesRecord(request, response, next) {
+    pool.query('SELECT * FROM sales_record ORDER BY sales_record_id ', (err, res) => {
+      if (err) return next(err);
+      response.status(200).send(res.rows);
+    });
   },
 
-  getOne(req, res) {
-    const { id } = req.params;
+  getOneSalesRecord(request, response, next) {
+    const { id } = request.params;
     let found = false;
-    const product = SaleModel;
-    product.Sales.forEach((item) => {
-      if (item.id === id) {
+    pool.query('SELECT * FROM sales_record WHERE sales_record_id = $1', [id], (err, res) => {
+      if (err) return next(err);
+      if ((res.rowCount !== 0)) {
         found = true;
-        return res.json(item);
+        return response.status(200).json(res.rows[0]);
       }
+      if (!found) return response.status(404).send({ message: 'No such record' });
     });
-    if (!found) {
-      res.status(404).json('Sales record not found');
-    }
   },
-  create(req, res) {
-    const {
-      id, productName, price, buyersName, amount,
-    } = req.body;
-    const product = SaleModel;
-
-    product.Sales.push({
-      id,
-      productName,
-      price,
-      buyersName,
-      amount,
+  createSalesRecord(request, response, next) {
+    const { product_name, buyers_name, price, amount } = request.body;
+    pool.query('INSERT INTO sales_record(product_name, buyers_name, price, amount) VALUES($1, $2, $3, $4)', [product_name, buyers_name, price, amount], (err, res) => {
+      if (err) return next(err);
+      response.status(201).send({
+        message: 'Sales Record Created!',
+        sale: res.rows,
+      });
     });
-    res.status(201).send(product.Sales[product.Sales.length - 1]);
   },
 };
 export default Sale;

@@ -1,43 +1,81 @@
-import ProductModel from '../models/Product';
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
 
 const Product = {
-  getAllProduct(req, res) {
-    const products = ProductModel;
-    return res.status(200).send(products);
+  getAllProduct(request, response, next) {
+    pool.query('SELECT * FROM products ORDER BY id ', (err, res) => {
+      if (err) return next(err);
+      response.status(200).send({
+        success: 'true',
+        products: res.rows,
+      });
+    });
   },
-  getOneProduct(req, res) {
-    const { id } = req.params;
+  getOneProduct(request, response, next) {
+    const { id } = request.params;
     let found = false;
-    const product = ProductModel;
-    product.Products.forEach((item) => {
-      if (item.id === id) {
+    pool.query('SELECT * FROM products WHERE id = $1', [id], (err, res) => {
+      if (err) return next(err);
+      if ((res.rowCount !== 0)) {
         found = true;
-        return res.status(200).json(item);
+        return response.status(200).json({
+          success: 'true',
+          product: res.rows[0],
+        });
+      }
+      if (!found) {
+        return response.status(404).send({
+          success: 'False',
+          message: 'No such record',
+        });
       }
     });
-    if (!found) {
-      res.status(404).json('Product not found');
-    }
   },
-  createProduct(req, res) {
-    const { id, name, price, quantity } = req.body;
-    const product = ProductModel;
-    product.Products.push({
-      id,
-      name,
-      price,
-      quantity,
-    });
-    res.status(201).send(product);
-  },
-  modifyProduct(req, res) {
-    res.status(200).send({
-      message: 'Updated product',
+  createProduct(request, response, next) {
+    const {
+      name, price, quantity,
+    } = request.body;
+    pool.query('INSERT INTO products(name, price, quantity) VALUES($1, $2, $3)', [name, price, quantity], (err, res) => {
+      if (err) return next(err);
+      response.status(201).send({ message: 'Product Created!' });
     });
   },
-  deleteProduct(req, res) {
-    res.status(200).send({
-      message: 'Product deleted',
+  modifyProduct(request, response, next) {
+    const { id } = request.params;
+
+    const { name, price, quantity } = request.body;
+
+    const keys = ['name', 'price', 'quantity'];
+
+    const feilds = [];
+
+    keys.forEach((key) => {
+      if (request.body[key]) feilds.push(key);
+    });
+
+    feilds.forEach((feild, index) => {
+      pool.query(`Update products SET ${feild}=($1) WHERE id=($2)`, [request.body[feild], id], (err, res) => {
+        if (err) return next(err);
+
+        if (index === feilds.length - 1)response.status(200).send({ message: 'Product Updated successfully' });
+      });
+    });
+  },
+
+
+  deleteProduct(request, response, next) {
+    const { id } = request.params;
+    pool.query('DELETE FROM products WHERE id=($1)', [id], (err, res) => {
+      if (err) return next(err);
+      response.status(200).send({ message: 'Product Deleted Successfully' });
     });
   },
 };
