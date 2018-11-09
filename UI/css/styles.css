@@ -90,6 +90,15 @@ nav ul li{
     padding:10px;
     cursor: pointer;
 }
+.btn__margin-bottom{
+    margin-bottom: 30px;
+}
+.btn__margin-top{
+    margin-top: 30px;
+}
+.btn__align--right{
+    text-align: right;
+}
 .text__font--largest{
     font-size:42px
 }
@@ -224,8 +233,8 @@ main {
     align-items: center;
 }
 .table-grid > span:hover, .table-grid--6 > span:hover, .cart-grid > span:hover{
-    background:#ed792b;
-    cursor: pointer;
+    background:#e1e1e1;
+    
 }
 /*Modal*/
 .modal{
@@ -328,17 +337,20 @@ main {
     color:#ed792b;
 }
 
-    .card__body{
-        text-align: center;
-    }
-    .card-btn{
-        display:flex;
-        text-align:center;
-        flex-direction:column;
-    }
-    .card-btn a{
-       margin-bottom:10px;
-    }
+.card__body{
+    text-align: center;
+}
+.card-btn{
+    display:flex;
+    text-align:center;
+    flex-direction:column;
+}
+.card-btn a{
+    margin-bottom:10px;
+}
+.card-btn__modal{
+    margin-top:60px
+}
     
 @media only screen and (max-width:1024px) {
     .card-grid {

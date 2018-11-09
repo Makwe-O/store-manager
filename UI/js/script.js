@@ -7,6 +7,18 @@ document.querySelector('.close').addEventListener('click', function(){
 });
 
 
+
+
+document.querySelector('#delete-btn').addEventListener('click', function(){
+    document.querySelector('.deleteModal').style.display = 'flex';
+});
+
+document.querySelector('.deleteClose').addEventListener('click', function(){
+    document.querySelector('.deleteModal').style.display = 'none';
+});
+
+
+
 // document.querySelector('#toggle').addEventListener('click', function(){
 //     document.querySelector('.dashboard-nav').classList.toggle('active-nav');
 //     console.log('hello');
