@@ -6,18 +6,12 @@
     <title>Sales Record|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   </head>
   <body>
     <div id="wrapper">
 
         <!--Sidebar-->
         <div class="dashboard-nav">
-            <div class="nav-toggle" id="toggle" onclick="toggleSidebar()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <header class="dashboard-header text-center">
                 <h1 class="dashboard-header__title">Store Manager</h1>
                 <h3>Welcome</h3>
@@ -25,7 +19,7 @@
             </header>
         
             <ul>
-                <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
+                <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a  class="active" href="sales-record.html">Sales Record</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="profile.html">Profile</a></li>
@@ -35,58 +29,76 @@
 
         <!--Main Content-->
         <main>
-            <div class="dashboard-header__title__container">
-                <div class="dashboard-header__title">
-                    <h1>STORE ATTENDANT</h1>
-                    <p>Tuesday, 9th October 2018 11:00</p>
-                </div>
-                <div class="dashboard-header__title__container-right">
-                    <form action="#" class="search-form">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button class="btn-search" type="submit" value="Search">Search</button>
-                    </form>
-                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                </div>
+            <div class="dashboard-header__title">
+                <h1>STORE ATTENDANT</h1>
+                <p>Tuesday, 9th October 2018 11:00</p>
             </div>
 
-            <div class="table-grid--6">
+            <div class="table-grid">
                 <span class="grid-header"><strong>Order Id</strong></span>
                 <span class="grid-header"><strong>Prod. Name</strong></span>
                 <span class="grid-header"><strong>Buyers Name</strong></span>
-                <span class="grid-header"><strong>Price</strong></span>
                 <span class="grid-header"><strong>Amount</strong></span>
                 <span class="grid-header"><strong>Date</strong></span>
 
-                <span>101</span>
-                <span>Sony SPS 1</span>
+                <span>10222</span>
+                <span>Product 1</span>
                 <span>Micheal Jordan</span>
-                <span>22000</span>
-                <span>1</span>
+                <span>24000</span>
                 <span>13/07/12</span>
 
-                <span>102</span>
-                <span>Sony SPS 1</span>
-                <span>Segun Tito</span>
-                <span>22000</span>
-                <span>2</span>
-                <span>14/07/12</span>
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
 
-                <span>103</span>
-                <span>Sony SPS 3</span>
-                <span>Fisyo Dara</span>
-                <span>10000</span>
-                <span>1</span>
-                <span>14/07/12</span>
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
 
+                <span>10222</span>
+                <span>Product 1</span>
+                <span>Micheal Jordan</span>
+                <span>24000</span>
+                <span>13/07/12</span>
+                    
+            </div>
+            <div>
+                <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Create Sales Record</a>
             </div>
         </main>
     </div>
-    
-      <!-- <footer>
+     <!--Modal-->
+     <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title text-center">
+                        <h2>Create Sales Record</h2>
+                    </div>
+                    <div class="close">+</div>
+                </div>
+                <div class="modal-body">
+                    <form id="/sales-record.html" id="create-sales-record">
+                        <select>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="electronics">Sony SPS</option>
+                        </select>
+                        <input type="text" placeholder="Buyers Name"/>
+                        <input type="text" class="" placeholder="Price"/>
+                        <input type="Date" placeholder="Date"/>
+                        <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+      <footer>
           <div class="container">
             <p class="text-center">Copyrigth 2018</p>
           </div>
-      </footer> -->
+      </footer>
       <script src="js/script.js"></script>
   </body>
 </html>
