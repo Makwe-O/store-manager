@@ -17,10 +17,9 @@ _dotenv2.default.config();
 var pool = new _pg.Pool({
   connectionString: process.env.DATABASE_URL
 });
-
 var Product = {
   getAllProduct: function getAllProduct(request, response, next) {
-    pool.query('SELECT * FROM product ORDER BY id ', function (err, res) {
+    pool.query('SELECT * FROM products ORDER BY id ', function (err, res) {
       if (err) return next(err);
       response.status(200).send({
         success: true,

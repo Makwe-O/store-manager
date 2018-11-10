@@ -7,7 +7,7 @@ const pool = new Pool({
 });
 const Product = {
   getAllProduct(request, response, next) {
-    pool.query('SELECT * FROM product ORDER BY id ', (err, res) => {
+    pool.query('SELECT * FROM products ORDER BY id ', (err, res) => {
       if (err) return next(err);
       response.status(200).send({
         success: true,
