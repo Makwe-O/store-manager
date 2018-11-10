@@ -16,11 +16,14 @@ const User = {
     pool.query('SELECT * FROM users WHERE email= $1', [email], (err, res) => {
       if (err) return next(err);
       if ((res.rowCount < 1)) {
-        return response.status(401).send({ message: 'Could not login. Wrong Email or Password' });
+        return response.status(401).send({ 
+          success: false,
+          message: 'Could not login. Wrong Email or Password' });
       }
       bcrypt.compare(request.body.password, res.rows[0].password, (err, result) => {
         if (err) {
           return response.status(401).send({
+            success: false,
             message: 'Could not login. Wrong Email or Password',
           });
         }
@@ -30,11 +33,13 @@ const User = {
             expiresIn: '1hr',
           });
           return response.status(200).send({
+            success: true,
             message: 'login. Auth Successful',
             token,
           });
         }
         response.status(401).send({
+          success: false,
           message: 'Could not login. Wrong Email or password',
         });
       });
@@ -56,7 +61,9 @@ const User = {
       pool.query('SELECT * FROM users WHERE email= $1', [email], (err, res) => {
         if (err) return next(err);
         if ((res.rowCount !== 0)) {
-          return response.status(409).json({ message: 'Mail Exists' });
+          return response.status(409).json({ 
+            success: false,
+            message: 'Mail Exists' });
         }
 
         // Insert new user
@@ -65,7 +72,10 @@ const User = {
             console.log(next(err));
             return next(err);
           }
-          response.status(201).send({ message: 'User Created!' });
+          response.status(201).send({
+            success: true,
+            message: 'User Created!' 
+          });
         });
       });
     });

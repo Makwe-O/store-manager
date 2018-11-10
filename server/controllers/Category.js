@@ -27,7 +27,7 @@ const Category = {
       if ((res.rowCount !== 0)) {
         found = true;
         return response.status(200).json({
-          success: 'true',
+          success: true,
           product: res.rows[0],
         });
       }

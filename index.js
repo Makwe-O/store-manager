@@ -1,13 +1,15 @@
 import express from 'express';
+import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import product from './server/routes/product-routes';
 import sale from './server/routes/sale-routes';
 import user from './server/routes/user-routes';
 import category from './server/routes/categories-routes';
 
-
 const app = express();
+app.use(cors());
 app.use(express.json());
+app.use(express.static('UI'));
 // Routes to handle requests
 app.use('/api/v1/products', product);
 app.use('/api/v1/sales', sale);
