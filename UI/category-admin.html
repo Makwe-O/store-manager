@@ -51,12 +51,12 @@
 
             <div>
                 <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Edit</a>
-                <a href="categories-admin.html"  class="btn btn__color--dark btn__border--orange">Delete</a>
+                <a href="#"  id ="delete-btn" class="btn btn__color--dark btn__border--orange">Delete</a>
             </div>
         </main>
     </div>
    
-     <!--Modal-->
+     <!--Edit category Modal-->
     <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -73,6 +73,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Delete Category Modal -->
+    <div class="modal deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center">
+                    <h2>Delete Category?</h2>
+                </div>
+                <div class="close deleteClose">+</div>
+            </div>
+            <div class="modal-body">
+                <div  class="card-btn card-btn__modal">
+                    <a href="categories-admin.html"  class="btn btn__color--dark btn__border--orange">Yes</a>
+                    <a href="categories-admin.html" class="btn btn__color--dark btn__border--orange">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
       <!-- <footer>
           <div class="container">
