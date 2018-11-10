@@ -79,8 +79,6 @@ nav ul li{
 .text__color--orange{
     color:#ed792b;
 }
-<<<<<<< HEAD
-=======
 .btn-search{
     height: 40px;
     position: absolute;
@@ -101,9 +99,11 @@ nav ul li{
 .btn__align--right{
     text-align: right;
 }
->>>>>>> ch-implement-lfa-frontend-#161798182
 .text__font--largest{
     font-size:42px
+}
+.search-form{
+    position: relative;
 }
 
 /*end Buttons*/
@@ -112,11 +112,32 @@ nav ul li{
 #wrapper{
    
 }
+.nav-toggle{
+    position: absolute;
+    display: none;
+    left:200px;
+    padding: 6px 6px;
+    cursor: pointer;
+}
+.nav-toggle span{
+    width:35px;
+    height: 4px;
+    display: block;
+    background: #ed792b;
+    margin-bottom: 5px   
+}
+.nav-toggle span:last-child{
+    margin-bottom: 0px;   
+}
+
+.active-nav{
+    left:0px !important;
+}
 .dashboard-nav{
     position: fixed;
-    overflow-y: auto;
-    overflow-x: hidden;
-    left: 0;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+    left: 0px;
     bottom: 0;
     height: 100%;
     z-index: 30;
@@ -124,6 +145,7 @@ nav ul li{
     background: #3F3F3F;
     color: #fff;
     box-shadow: 2px 1px 2px #3f3f3f;
+    transition: 400ms;
 }
 .dashboard-nav ul span {
     display: block;
@@ -152,6 +174,16 @@ nav ul li{
 .dashboard-header__title{
     margin-bottom:30px;
 }
+.dashboard-header__title__container, .dashboard-header__title__container-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dashboard-header__title__container-right > a{
+    position: relative;
+    top:25px;
+    padding-left:10px;
+}
 
 main {
     margin-left: 200px;
@@ -169,6 +201,15 @@ main {
     border-top: 1px solid #3f3f3f;
     border-right: 1px solid #3f3f3f;
     margin-bottom:30px;
+    overflow-x:auto;
+}
+.cart-grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid #3f3f3f;
+    border-right: 1px solid #3f3f3f;
+    margin-bottom:30px;
+    overflow-x:auto;
 }
 .table-grid--6 {
     display: grid;
@@ -176,6 +217,7 @@ main {
     border-top: 1px solid #3f3f3f;
     border-right: 1px solid #3f3f3f;
     margin-bottom:30px;
+    overflow-x: auto;
 }
 .grid-header{
     background:#ed792b;
@@ -183,21 +225,17 @@ main {
     border-right: 1px solid #ed792b;
 }
 
-.table-grid > span, .table-grid--6 > span{
+.table-grid > span, .table-grid--6 > span, .cart-grid > span{
     padding: 15px 15px;
     border-left: 1px solid #3f3f3f;
     border-bottom: 1px solid #3f3f3f;
-<<<<<<< HEAD
-=======
     display: flex;
     align-items: center;
 }
 .table-grid > span:hover, .table-grid--6 > span:hover, .cart-grid > span:hover{
     background:#e1e1e1;
     
->>>>>>> ch-implement-lfa-frontend-#161798182
 }
-
 /*Modal*/
 .modal{
     position: absolute;
@@ -210,10 +248,10 @@ main {
     justify-content: center;
     align-items: center;
     display: none;
-    z-index: 1000;
+    transition: 400ms;
 }
-
 .modal-content{
+    margin: 0px 30px;
     width:500px;
     min-height:300px;
     background-color:#fff;
@@ -244,7 +282,7 @@ main {
 }
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 30% 33% 33%;
     grid-gap: 30px;
     margin-bottom:30px;
 }
@@ -276,12 +314,16 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 82vh;
+}
+.content-box--bg{
+    background-image: linear-gradient(to bottom, #3f3f3f, #654c64, #9f516f, #d45a5b, #ed792b);
 }
 .text-center{
     text-align: center;
 }
 .form-container{
+    background:#fff;
     padding:50px;
     box-shadow:1px 1px 10px #3b3b3b;
     max-width: 300px;
@@ -290,8 +332,6 @@ main {
     position:fixed;
     bottom:0;
 }
-<<<<<<< HEAD
-=======
 .fa-shopping-cart{
     font-size: 30px;
     color:#ed792b;
@@ -342,4 +382,3 @@ main {
     }
    
 }
->>>>>>> ch-implement-lfa-frontend-#161798182

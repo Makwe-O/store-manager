@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Products|Store Manager</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="wrapper">
+
+         <!--Sidebar-->
+        <div class="dashboard-nav">
+            <div class="nav-toggle" id="toggle" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <header class="dashboard-header text-center">
+                <h1 class="dashboard-header__title">Store Manager</h1>
+                <h3>Welcome</h3>
+                <p>Notmaks</p>
+            </header>
+        
+            <ul>
+                <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
+                <li><a href="sales-record.html">Sales Record</a></li>
+                <li><a class="active" href="products.html">Products</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        
+        </div>
+
+         <!--Main Content-->
+        <main>
+            <div class="dashboard-header__title__container">
+                <div class="dashboard-header__title">
+                    <h1>STORE ATTENDANT</h1>
+                    <p>Tuesday, 9th October 2018 11:00</p>
+                </div>
+                <div class="dashboard-header__title__container-right">
+                    <form action="#" class="search-form">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button class="btn-search" type="submit" value="Search">Search</button>
+                    </form>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+               
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body ">
+                        <h3 class="card__title">Sony SPS</h3>
+                        <h4 class="card__title">#2000</h4>
+                        <div class="card-btn">
+                            <a href="product.html" class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        </div>
+                    </div>
+                    </div>
+               
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body">
+                        <h3 class="card__title">Sony SPS</h3>
+                        <h4 class="card__title">#2000</h4>
+                        <div class="card-btn">
+                            <a href="product.html"class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                    <div class="card__body">
+                        <h3 class="card__title">Sony SPS</h3>
+                        <h4 class="card__title">#2000</h4>
+                        <div class="card-btn">
+                            <a href="product.html" class="btn btn__color--dark btn__border--orange">View</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+    <!--Modal-->
+     <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center">
+                    <h2>Add To Cart</h2>
+                </div>
+                <div class="close">+</div>
+            </div>
+            <div class="modal-body">
+                <form id="/sales-record.html" id="create-sales-record">
+                    <input type="text" placeholder="Buyers Name"/>
+                    <input type="number" placeholder="Amount"/>
+                    <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                </form>
+            </div>
+        </div>
+    </div>
+      <!-- <footer>
+          <div class="container">
+            <p class="text-center">Copyrigth 2018</p>
+          </div>
+      </footer> -->
+      <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-document.getElementById('button').addEventListener('click', function(){
+document.querySelector('#button').addEventListener('click', function(){
     document.querySelector('.modal').style.display = 'flex';
 });
 
@@ -7,8 +7,6 @@ document.querySelector('.close').addEventListener('click', function(){
 });
 
 
-<<<<<<< HEAD
-=======
 
 
 document.querySelector('#delete-btn').addEventListener('click', function(){
@@ -28,4 +26,3 @@ document.querySelector('.deleteClose').addEventListener('click', function(){
 function toggleSidebar(){
     document.querySelector('.dashboard-nav').classList.toggle('active-nav');
 }
->>>>>>> ch-implement-lfa-frontend-#161798182
