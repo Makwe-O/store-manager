@@ -1,8 +1,9 @@
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const loginForm = document.getElementById('loginForm');
+const errorId = document.getElementById('errorId');
 loginForm.addEventListener('submit', (e) => {
-  fetch('https://store-appl.herokuapp.com/api/v1/auth/login', {
+  fetch('http://localhost:3000/api/v1/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,20 +16,15 @@ loginForm.addEventListener('submit', (e) => {
     .then(response => response.json())
     .then((data) => {
       if (data.success === false) {
-        // flash message here
-        // console.log('wrong');
+        errorId.style.display = 'block';
+        setTimeout(() => {
+          errorId.style.display = 'none';
+        }, 3000);
       }
       localStorage.setItem('token', data.token);
-      window.location.href = 'dashboard-admin.html';
-    });
+      const decoded = jwt_decode(data.token);
+      window.location = decoded.role === 'Admin' ? 'dashboard-admin.html' : 'sales-record.html';
+    })
+    .catch(e => console.log(e.message));
   e.preventDefault();
 });
-
-
-// const logout = document.getElementById('logout');
-// // logout.addEventListener('click', () => {
-// // console.log("dkdv")
-// // //   localStorage.removeItem('token');
-// // //   window.location.href = 'login.html';
-// // });
-// console.log(logout)

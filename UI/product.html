@@ -29,7 +29,7 @@
                 <li><a href="sales-record.html">Sales Record</a></li>
                 <li><a  class="active" href="products.html">Products</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
             </ul>
         
         </div>
@@ -67,17 +67,34 @@
                         <p><strong>Minimum Inventory Quantity:</strong> 20</p>
                     </div>
                     <div class="card-btn">
-                        <a href="#"  class="btn btn__color--dark btn__border--orange">Add to Cart</a>
+                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add to Cart</a>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-      <!-- <footer>
-          <div class="container">
-            <p class="text-center">Copyrigth 2018</p>
-          </div>
-      </footer> -->
+
+     <!--Modal-->
+     <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title text-center">
+                        <h2>Add To Cart</h2>
+                    </div>
+                    <div class="close">+</div>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="text" placeholder="Buyers Name"/>
+                        <input type="number" placeholder="Amount"/>
+                        <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+      
       <script src="js/script.js"></script>
+      <script src="js/logout.js"></script>
+      <script src="js/redirect.js"></script>
   </body>
 </html>
