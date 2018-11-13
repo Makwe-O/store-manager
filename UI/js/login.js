@@ -2,7 +2,9 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const loginForm = document.getElementById('loginForm');
 const errorId = document.getElementById('errorId');
-loginForm.addEventListener('submit', (e) => {
+
+function login(e) {
+  e.preventDefault();
   fetch('http://localhost:3000/api/v1/auth/login', {
     method: 'POST',
     headers: {
@@ -25,6 +27,6 @@ loginForm.addEventListener('submit', (e) => {
       const decoded = jwt_decode(data.token);
       window.location = decoded.role === 'Admin' ? 'dashboard-admin.html' : 'sales-record.html';
     })
-    .catch(e => console.log(e.message));
-  e.preventDefault();
-});
+    .catch(error => console.log(error.message));
+}
+loginForm.addEventListener('submit', login);

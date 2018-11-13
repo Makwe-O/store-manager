@@ -3,7 +3,10 @@
 var email = document.getElementById('email');
 var password = document.getElementById('password');
 var loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', function (e) {
+var errorId = document.getElementById('errorId');
+
+function login(e) {
+  e.preventDefault();
   fetch('http://localhost:3000/api/v1/auth/login', {
     method: 'POST',
     headers: {
@@ -17,14 +20,16 @@ loginForm.addEventListener('submit', function (e) {
     return response.json();
   }).then(function (data) {
     if (data.success === false) {
-      // flash message here
-      return 'Error';
+      errorId.style.display = 'block';
+      setTimeout(function () {
+        errorId.style.display = 'none';
+      }, 3000);
     }
     localStorage.setItem('token', data.token);
     var decoded = jwt_decode(data.token);
-    window.location = decoded.role === 'Admin' ? 'dashboard-admin.html' : 'products.html';
-  }).catch(function (e) {
-    return console.log(e.message);
+    window.location = decoded.role === 'Admin' ? 'dashboard-admin.html' : 'sales-record.html';
+  }).catch(function (error) {
+    return console.log(error.message);
   });
-  e.preventDefault();
-});
+}
+loginForm.addEventListener('submit', login);

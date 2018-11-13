@@ -72,16 +72,16 @@
                 <div class="close">+</div>
             </div>
             <div class="modal-body">
-                <form>
-                    <input type="text" class="" placeholder="Product Name"/>
+                <form id="editProductForm">
+                    <input type="text" class="" id= "name" placeholder="Product Name"/>
                     <input type="file" id="input-image" accept="image/*" name="image">
-                    <input type="number" class="" placeholder="Price"/>
+                    <input type="number" class="" id="price" placeholder="Price"/>
                     <select>
                         <option value="" disabled selected>Select Category</option>
                         <option value="electronics">Electronics</option>
                         <option value="leisure">Leisure</option>
                     </select>
-                    <input type="number" class="" placeholder="Quantity in Inventory"/>
+                    <input type="number" class="" id="quantity" placeholder="Quantity in Inventory"/>
                     <input type="submit" class="btn btn__border--orange"  value="Add"/>
                 </form>
             </div>
@@ -90,5 +90,6 @@
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/redirect.js"></script>
+    <script src="js/editProduct.js"></script>
   </body>
 </html>

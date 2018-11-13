@@ -17,6 +17,7 @@
                 <span></span>
                 <span></span>
             </div>
+            
             <header class="dashboard-header text-center">
                 <h1 class="dashboard-header__title">Store Manager</h1>
                 <h3>Welcome</h3>
@@ -28,7 +29,7 @@
                 <li><a href="sales-attendants.html">Sales Attendants</a></li>
                 <li><a class="active" href="products-admin.html">Products</a></li>
                 <li><a href="categories-admin.html">Categories</a></li>
-                <li><a href="#" id="logout">Logout</a></li>
+                <li><a href="login.html">Logout</a></li>
             </ul>
         
         </div>
@@ -36,7 +37,7 @@
          <!--Main Content-->
         <main>
             <div class="dashboard-header__title">
-                <h1>STORE ADMIN</h1>
+                <h1>STORE ATTENDANT</h1>
                 <p>Tuesday, 9th October 2018 11:00</p>
             </div>
 
@@ -44,74 +45,52 @@
                <h2>Product</h2>
            </div>
 
-          
-            <div class="card-grid">
-               
-                <div class="card">
-                    <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
-                    <div class="card__body ">
-                        <h4 class="card__title">Sony SPS</h4>
-                        <div class="card__text">
-                            <p><strong>Price:</strong> 22000</p>
-                            <p><strong>Category:</strong> Electronics</p>
-                            <p><strong>Inventory:</strong> 20</p>
-                            <p><strong>Minimum Inventory Quantity:</strong> 20</p>
-                        </div>
-                        
-                        <div  class="card-btn">
-                            <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Edit</a>
-                            <a href="#" id="delete-btn" class="btn btn__color--dark btn__border--orange">Delete</a>
-                        </div>
-                        
+           <div>
+                <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
+                <div>
+                    <h4 class="card__title">Sony SPS</h4>
+                    <div class="card__text">
+                        <p><strong>Price:</strong> 22000</p>
+                        <p><strong>Category:</strong> Electronics</p>
+                        <p><strong>Inventory:</strong> 20</p>
+                        <p><strong>Minimum Inventory Quantity:</strong> 20</p>
+                       
                     </div>
+                    <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Edit</a>
+                    <a href="#" class="btn btn__color--dark btn__border--orange">Delete</a>
+                    
                 </div>
+            </div>
         </main>
     </div>
-    <!-- Edit Product Modal -->
     <div class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title text-center">
-                    <h2>Edit Product</h2>
+                    <h2>Add Product</h2>
                 </div>
                 <div class="close">+</div>
             </div>
             <div class="modal-body">
-                <form>
-                    <input type="text" class="" placeholder="Product Name"/>
+                <form id="editProductForm">
+                    <input type="text" class="" id= "name" placeholder="Product Name"/>
                     <input type="file" id="input-image" accept="image/*" name="image">
-                    <input type="number" class="" placeholder="Price"/>
+                    <input type="number" class="" id="price" placeholder="Price"/>
                     <select>
                         <option value="" disabled selected>Select Category</option>
                         <option value="electronics">Electronics</option>
                         <option value="leisure">Leisure</option>
                     </select>
-                    <input type="number" class="" placeholder="Quantity in Inventory"/>
-                    <input type="submit" class="btn btn__border--orange"  value="Edit"/>
+                    <input type="number" class="" id="quantity" placeholder="Quantity in Inventory"/>
+                    <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    <p class="text-center error-message" id="errorId"></p>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Delete Product Modal -->
-    <div class="modal deleteModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title text-center">
-                    <h2>Delete Product?</h2>
-                </div>
-                <div class="close deleteClose">+</div>
-            </div>
-            <div class="modal-body">
-                <div  class="card-btn card-btn__modal">
-                    <a href="#"  class="btn btn__color--dark btn__border--orange">Yes</a>
-                    <a href="product-admin.html" class="btn btn__color--dark btn__border--orange">No</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/redirect.js"></script>
+    <script src="js/editProduct.js"></script>
   </body>
 </html>
