@@ -61,9 +61,10 @@ const User = {
       pool.query('SELECT * FROM users WHERE email= $1', [email], (err, res) => {
         if (err) return next(err);
         if ((res.rowCount !== 0)) {
-          return response.status(409).json({ 
+          return response.status(409).json({
             success: false,
-            message: 'Mail Exists' });
+            message: 'Mail Exists',
+          });
         }
 
         // Insert new user

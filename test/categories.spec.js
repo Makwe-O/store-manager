@@ -5,6 +5,47 @@ import server from '../index';
 chai.use(chaiHttp);
 const { expect } = chai;
 let adminToken;
+
+
+describe('GET /auth/signup', () => {
+  before((done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signup')
+      .send({
+        name: 'Jide',
+        email: 'jide1@yahoo.com',
+        role: 'Admin',
+        password: 'qwerty',
+      })
+      .end((err, res) => { 
+        done();
+      });
+  });
+  before((done) => {
+    chai.request(server)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'jide1@yahoo.com',
+        password: 'qwerty',
+      })
+      .end((err, res) => {      
+        done();
+      });
+  });
+
+
+  it('Should return status 401 if no data is sent', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/login')
+      .send({})
+      .end((err, res) => {
+        expect(res.status).to.equal(401);
+        done();
+      });
+  });
+});
+
+
 describe('category', () => {
   before((done) => {
     chai.request(server)
@@ -15,23 +56,9 @@ describe('category', () => {
         role: 'Admin',
         password: 'qwerty',
       })
-      .end(() => {
+      .end((err, res) => {
         done();
       });
-  });
-  describe('GET /category', () => {
-    it('should return status 200 with proper response', (done) => {
-      chai.request(server)
-        .get('/api/v1/categories')
-        .end((err, res) => {
-          expect(res.status).to.equal(200);
-          expect(res.body).to.have.property('categories');
-          expect(res.body).to.have.property('success');
-          expect(res.body.success).to.be.a('boolean');
-          expect(res.body.success).to.equal(true);
-          done();
-        });
-    });
   });
 
   describe('POST /category', () => {
@@ -83,12 +110,28 @@ describe('category', () => {
         .post('/api/v1/categories')
         .send({ })
         .set('Authorization', `Bearer ${adminToken}`)
-        .end((err, res) => {      
+        .end((err, res) => {
           expect(res.status).to.equal(400);
           done();
         });
     });
   });
+
+  describe('GET /category', () => {
+    it('should return status 200 with proper response', (done) => {
+      chai.request(server)
+        .get('/api/v1/categories')
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('categories');
+          expect(res.body).to.have.property('success');
+          expect(res.body.success).to.be.a('boolean');
+          expect(res.body.success).to.equal(true);
+          done();
+        });
+    });
+  });
+
   describe('GET /category/:id', () => {
     it('Endpoint should return 404 if an invalid id is passed', (done) => {
       chai.request(server)

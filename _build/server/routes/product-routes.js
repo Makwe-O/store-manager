@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 router.get('/', _Product2.default.getAllProduct);
 router.get('/:id', _Product2.default.getOneProduct);
-router.post('/', _auth2.default.ensureToken, _validate2.default.emptyValueProduct, _validate2.default.checkRoleAdmin, _Product2.default.createProduct);
+router.post('/', _auth2.default.ensureToken, _validate2.default.checkRoleAdmin, _validate2.default.emptyValueProduct, _Product2.default.createProduct);
 router.put('/:id', _auth2.default.ensureToken, _validate2.default.checkRoleAdmin, _Product2.default.modifyProduct);
 router.delete('/:id', _auth2.default.ensureToken, _validate2.default.checkRoleAdmin, _Product2.default.deleteProduct);
 

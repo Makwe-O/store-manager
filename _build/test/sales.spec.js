@@ -28,17 +28,6 @@ describe('GET /sales', function () {
 });
 
 describe('POST /sales', function () {
-  it('should return an object if valid input is passed', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/product/sales').send({
-      product_name: 'Sony Sps',
-      buyers_name: 'Mr. Mike',
-      price: 30,
-      amount: 22
-    }).end(function (err, res) {
-      expect(res.body).to.be.an('object');
-      done();
-    });
-  });
   it('should return status 201 when sale is created', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({
       product_name: 'Caprisone',
@@ -97,6 +86,35 @@ describe('POST /sales', function () {
       // amount: 22,
     }).end(function (err, res) {
       expect(res.status).to.equal(400);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if price is not a number ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      product_name: 'Caprisone',
+      price: '2200',
+      buyers_name: 'Mr Mike',
+      amount: 22
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if quantity is not a number ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      product_name: 'Caprisone',
+      price: 2200,
+      buyers_name: 'Mr Mike',
+      amount: '22'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
       done();
     });
   });

@@ -18,6 +18,35 @@ _chai2.default.use(_chaiHttp2.default);
 var expect = _chai2.default.expect;
 
 var adminToken = void 0;
+
+describe('GET /auth/signup', function () {
+  before(function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
+      name: 'Jide',
+      email: 'jide1@yahoo.com',
+      role: 'Admin',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      done();
+    });
+  });
+  before(function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/login').send({
+      email: 'jide1@yahoo.com',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      done();
+    });
+  });
+
+  it('Should return status 401 if no data is sent', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/login').send({}).end(function (err, res) {
+      expect(res.status).to.equal(401);
+      done();
+    });
+  });
+});
+
 describe('category', function () {
   before(function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
@@ -25,20 +54,8 @@ describe('category', function () {
       email: 'jide1@yahoo.com',
       role: 'Admin',
       password: 'qwerty'
-    }).end(function () {
+    }).end(function (err, res) {
       done();
-    });
-  });
-  describe('GET /category', function () {
-    it('should return status 200 with proper response', function (done) {
-      _chai2.default.request(_index2.default).get('/api/v1/categories').end(function (err, res) {
-        expect(res.status).to.equal(200);
-        expect(res.body).to.have.property('categories');
-        expect(res.body).to.have.property('success');
-        expect(res.body.success).to.be.a('boolean');
-        expect(res.body.success).to.equal(true);
-        done();
-      });
     });
   });
 
@@ -82,6 +99,20 @@ describe('category', function () {
       });
     });
   });
+
+  describe('GET /category', function () {
+    it('should return status 200 with proper response', function (done) {
+      _chai2.default.request(_index2.default).get('/api/v1/categories').end(function (err, res) {
+        expect(res.status).to.equal(200);
+        expect(res.body).to.have.property('categories');
+        expect(res.body).to.have.property('success');
+        expect(res.body.success).to.be.a('boolean');
+        expect(res.body.success).to.equal(true);
+        done();
+      });
+    });
+  });
+
   describe('GET /category/:id', function () {
     it('Endpoint should return 404 if an invalid id is passed', function (done) {
       _chai2.default.request(_index2.default).get('/api/v1/categories/' + 90).end(function (err, res) {

@@ -3,9 +3,28 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-
 var validate = {
+  isValidEmail: function isValidEmail(req, res, next) {
+    var emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/ig;
+    if (emailRegex.test(req.body.email).trim().toLowercase()) {
+      res.status(400).send({
+        success: false,
+        message: 'Enter correct email'
+      });
+      return;
+    }
+    next();
+  },
+  isValidPassword: function isValidPassword(req, res, next) {
+    if (req.body.password.trim().length < 5) {
+      res.status(400).send({
+        success: false,
+        message: 'Password must be 5 characters long'
+      });
+      return;
+    }
+    next();
+  },
   emptyValueSales: function emptyValueSales(req, res, next) {
     if (!req.body.product_name) {
       res.status(400).send({
@@ -66,13 +85,21 @@ var validate = {
       });
       return;
     }
-    if (Number.isInteger(req.body.price)) {
+    if (!Number.isInteger(req.body.price)) {
       res.status(400).send({
         success: false,
         message: 'Price is not a number'
       });
       return;
     }
+    if (req.body.price < 1) {
+      res.status(400).send({
+        success: false,
+        message: 'Price cannot be less than 1'
+      });
+      return;
+    }
+
     if (!req.body.quantity) {
       res.status(400).send({
         success: false,
@@ -80,10 +107,17 @@ var validate = {
       });
       return;
     }
-    if (Number.isInteger(req.body.quantity)) {
+    if (!Number.isInteger(req.body.quantity)) {
       res.status(400).send({
         success: false,
         message: 'Quantity is not a number'
+      });
+      return;
+    }
+    if (req.body.quantity < 1) {
+      res.status(400).send({
+        success: false,
+        message: 'Quantity cannot be less than 1'
       });
       return;
     }
@@ -115,7 +149,7 @@ var validate = {
     } else {
       res.status(401).json({
         success: false,
-        message: 'Please sign in as store attendnt'
+        message: 'Please sign in as store attendant'
       });
     }
   }

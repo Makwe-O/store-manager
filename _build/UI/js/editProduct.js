@@ -4,12 +4,13 @@ var name = document.getElementById('name');
 var price = document.getElementById('price');
 var quantity = document.getElementById('quantity');
 var errorId = document.getElementById('errorId');
-var addProductsForm = document.getElementById('addProductsForm');
+var editProductForm = document.getElementById('editProductForm');
 
-function addProduct(e) {
+function editProduct(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/products', {
-    method: 'POST',
+  // eslint-disable-next-line no-template-curly-in-string
+  fetch('http://localhost:3000/api/v1/products/${id}', {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
@@ -23,7 +24,7 @@ function addProduct(e) {
     return response.json();
   }).then(function (data) {
     if (data.success === true) {
-      window.location.href = 'products-admin.html';
+      window.location.href = 'product-admin.html';
     }
     errorId.innerHTML = '' + data.message;
     errorId.style.display = 'block';
@@ -35,4 +36,4 @@ function addProduct(e) {
   });
 }
 
-addProductsForm.addEventListener('submit', addProduct);
+editProductForm.addEventListener('submit', editProduct);

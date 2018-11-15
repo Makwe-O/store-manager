@@ -18,20 +18,6 @@ describe('GET /sales', () => {
 
 
 describe('POST /sales', () => {
-  it('should return an object if valid input is passed', (done) => {
-    chai.request(server)
-      .post('/api/v1/product/sales')
-      .send({
-        product_name: 'Sony Sps',
-        buyers_name: 'Mr. Mike',
-        price: 30,
-        amount: 22,
-      })
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        done();
-      });
-  });
   it('should return status 201 when sale is created', (done) => {
     chai.request(server)
       .post('/api/v1/sales')
@@ -108,6 +94,41 @@ describe('POST /sales', () => {
       })
       .end((err, res) => {
         expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('Shoud return status of 400 if price is not a number ', (done) => {
+    chai.request(server)
+      .post('/api/v1/sales')
+      .send({
+        product_name: 'Caprisone',
+        price: '2200',
+        buyers_name: 'Mr Mike',
+        amount: 22,
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('success');
+        expect(res.body.success).to.be.a('boolean');
+        expect(res.body.success).to.equal(false);
+        done();
+      });
+  });
+  it('Shoud return status of 400 if quantity is not a number ', (done) => {
+    chai.request(server)
+      .post('/api/v1/sales')
+      .send({
+        product_name: 'Caprisone',
+        price: 2200,
+        buyers_name: 'Mr Mike',
+        amount: '22',
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body).to.have.property('success');
+        expect(res.body.success).to.be.a('boolean');
+        expect(res.body.success).to.equal(false);
         done();
       });
   });
