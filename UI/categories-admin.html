@@ -6,6 +6,7 @@
     <title>Categories|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <script src="js/jwt-decode.min.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -43,7 +44,7 @@
             
             <div class="user-details">
                 <h2>Categories</h2>
-                <ul>
+                <ul class="categories-list">
                     <li><a href="category-admin.html">Electronics</a></li>
                     <li><a href="category-admin.html">Leisure</a></li>    
                 </ul>
@@ -57,27 +58,28 @@
    
      <!--Modal-->
     <div class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title text-center">
-                        <h2>Add Category</h2>
-                    </div>
-                    <div class="close">+</div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center">
+                    <h2>Add Category</h2>
                 </div>
-                <div class="modal-body">
-                    <form id="addCategoryForm">
-                        <input type="text" class="" id="categoryName" placeholder="Category Name"/>
-                        <input type="submit" class="btn btn__border--orange"  value="Add"/>
-                        <p class="text-center error-message" id="errorId"></p>
-                    </form>
-                </div>
+                <div class="close">+</div>
+            </div>
+            <div class="modal-body">
+                <form id="addCategoryForm">
+                    <input type="text" class="" id="categoryName" placeholder="Category Name"/>
+                    <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    <p class="text-center error-message" id="errorId"></p>
+                </form>
             </div>
         </div>
+    </div>
 
      
       <script src="js/script.js"></script>
       <script src="js/logout.js"></script>
-      <script src="js/redirect.js"></script>
+      <script src="js/adminAuth.js"></script>
+      <script src="js/getCategories.js"></script>
       <script src="js/addCategory.js"></script>
   </body>
 </html>

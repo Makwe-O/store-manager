@@ -29,6 +29,7 @@ describe('POST /products', function () {
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
         name: 'Caprisone',
         price: 2200,
+        category: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(201);
@@ -49,6 +50,7 @@ describe('POST /products', function () {
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
         name: 'Caprisone',
         price: 2200,
+        category: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken + 'r').end(function (err, res) {
         expect(res.status).to.equal(401);
@@ -70,6 +72,7 @@ describe('POST /products', function () {
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
         name: 'Caprisone',
         price: 2200,
+        category: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(409);

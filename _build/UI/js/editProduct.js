@@ -8,8 +8,7 @@ var editProductForm = document.getElementById('editProductForm');
 
 function editProduct(e) {
   e.preventDefault();
-  // eslint-disable-next-line no-template-curly-in-string
-  fetch('http://localhost:3000/api/v1/products/${id}', {
+  fetch('http://localhost:3000/api/v1/products/' + id, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

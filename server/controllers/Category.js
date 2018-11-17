@@ -49,11 +49,12 @@ const Category = {
           message: 'Category already exists',
         });
       }
-      pool.query('INSERT INTO categories(category_name) VALUES($1)', [category_name], (err, res) => {
+      pool.query('INSERT INTO categories(category_name) VALUES($1) RETURNING *', [category_name], (err, res) => {
         if (err) return next(err);
         return response.status(201).json({
           success: true,
           message: 'Category Created!',
+          category: res.rows[0]
         });
       });
     });

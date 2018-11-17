@@ -1,30 +1,25 @@
 'use strict';
 
-var name = document.getElementById('name');
-var price = document.getElementById('price');
-var quantity = document.getElementById('quantity');
+var categoryName = document.getElementById('categoryName');
 var errorId = document.getElementById('errorId');
-var addProductsForm = document.getElementById('addProductsForm');
+var deleteCategoryForm = document.getElementById('deleteCategoryForm');
 
-function addProduct(e) {
+function deleteCategory(e) {
   e.preventDefault();
-  console.log(Number(name.value));
-  fetch('http://localhost:3000/api/v1/products', {
-    method: 'POST',
+  fetch('http://localhost:3000/api/v1/categories/' + id, {
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      name: name.value,
-      price: Number(price.value),
-      quantity: Number(quantity.value)
+      category_name: categoryName.value
     })
   }).then(function (response) {
     return response.json();
   }).then(function (data) {
     if (data.success === true) {
-      window.location.href = 'products-admin.html';
+      window.location.href = 'categories-admin.html';
     }
     errorId.innerHTML = '' + data.message;
     errorId.style.display = 'block';
@@ -36,4 +31,4 @@ function addProduct(e) {
   });
 }
 
-addProductsForm.addEventListener('submit', addProduct);
+deleteCategoryForm.addEventListener('submit', deleteCategory);

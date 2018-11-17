@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const pool = new Pool({
@@ -7,7 +8,7 @@ const pool = new Pool({
 });
 const Product = {
   getAllProduct(request, response, next) {
-    pool.query('SELECT * FROM products ORDER BY id ', (err, res) => {
+    pool.query('SELECT product_id, product_image, product_name, price, category_name, quantity FROM products INNER JOIN categories USING (category_id) ORDER BY product_id ', (err, res) => {
       if (err) return next(err);
       response.status(200).send({
         success: true,
@@ -18,7 +19,7 @@ const Product = {
   getOneProduct(request, response, next) {
     const { id } = request.params;
     let found = false;
-    pool.query('SELECT * FROM products WHERE id = $1', [id], (err, res) => {
+    pool.query('SELECT product_id, product_image, product_name, price, category_name, quantity FROM products INNER JOIN categories USING (category_id) WHERE product_id = $1', [id], (err, res) => {
       if (err) return next(err);
       if ((res.rowCount !== 0)) {
         found = true;
@@ -37,9 +38,9 @@ const Product = {
   },
   createProduct(request, response, next) {
     const {
-      name, price, quantity,
+      image, name, price, category, quantity,
     } = request.body;
-    pool.query('SELECT * FROM products WHERE name= $1', [name], (err, res) => {
+    pool.query('SELECT * FROM products WHERE product_name= $1', [name], (err, res) => {
       if (err) return next(err);
       if ((res.rowCount !== 0)) {
         return response.status(409).json({
@@ -47,12 +48,12 @@ const Product = {
           message: 'Product already exists',
         });
       }
-      pool.query('INSERT INTO products(name, price, quantity) VALUES($1, $2, $3)', [name, price, quantity], (err, res) => {
+      pool.query('INSERT INTO products(product_image, product_name, price, category_id, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *', [image, name, price, category, quantity], (err, res) => {
         if (err) return next(err);
         response.status(201).json({
           success: true,
           message: 'Product Created!',
-          products: res.rows,
+          products: res.rows[0],
         });
       });
     });
@@ -60,9 +61,11 @@ const Product = {
   modifyProduct(request, response, next) {
     const { id } = request.params;
 
-    const { name, price, quantity } = request.body;
+    const {
+ image, name, price, category, quantity 
+} = request.body;
 
-    const keys = ['name', 'price', 'quantity'];
+    const keys = ['product_image', 'product_name', 'price', 'category_id', 'quantity'];
 
     const feilds = [];
 
@@ -71,7 +74,7 @@ const Product = {
     });
 
     feilds.forEach((feild, index) => {
-      pool.query(`Update products SET ${feild}=($1) WHERE id=($2)`, [request.body[feild], id], (err, res) => {
+      pool.query(`Update products SET ${feild}=($1) WHERE product_id=($2)`, [request.body[feild], id], (err, res) => {
         if (err) return next(err);
 
         if (index === feilds.length - 1)response.status(200).send({ message: 'Product Updated successfully' });
@@ -82,7 +85,7 @@ const Product = {
 
   deleteProduct(request, response, next) {
     const { id } = request.params;
-    pool.query('DELETE FROM products WHERE id=($1)', [id], (err, res) => {
+    pool.query('DELETE FROM products WHERE product_id=($1)', [id], (err, res) => {
       if (err) return next(err);
       response.status(200).send({ message: 'Product Deleted Successfully' });
     });

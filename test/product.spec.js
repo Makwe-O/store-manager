@@ -21,6 +21,7 @@ describe('POST /products', () => {
           .send({
             name: 'Caprisone',
             price: 2200,
+            category: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -49,6 +50,7 @@ describe('POST /products', () => {
           .send({
             name: 'Caprisone',
             price: 2200,
+            category: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}r`)
@@ -79,6 +81,7 @@ describe('POST /products', () => {
           .send({
             name: 'Caprisone',
             price: 2200,
+            category: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)

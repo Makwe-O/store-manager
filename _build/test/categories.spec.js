@@ -148,8 +148,15 @@ describe('category', function () {
   });
 
   describe('DELETE /Category', function () {
+    before(function (done) {
+      _chai2.default.request(_index2.default).post('/api/v1/categories').send({
+        category_name: 'foods'
+      }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
+        done();
+      });
+    });
     it('should return status of 403 if user isnt authorized to delete category with proper response message', function (done) {
-      _chai2.default.request(_index2.default).delete('/api/v1/categories/' + 1).end(function (err, res) {
+      _chai2.default.request(_index2.default).delete('/api/v1/categories/' + 2).end(function (err, res) {
         expect(res.status).to.equal(403);
         expect(res.body).to.have.property('message');
         done();
@@ -157,7 +164,7 @@ describe('category', function () {
     });
 
     it('should return status of 200 if category is deleted with proper response message', function (done) {
-      _chai2.default.request(_index2.default).delete('/api/v1/categories/' + 1).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
+      _chai2.default.request(_index2.default).delete('/api/v1/categories/' + 2).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(200);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('success');

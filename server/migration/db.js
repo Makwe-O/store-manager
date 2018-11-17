@@ -17,10 +17,20 @@ pool.on('connect', () => {
 export const createTables = () => {
   pool.query(
     `CREATE TABLE IF NOT EXISTS
+      categories(
+        category_id serial PRIMARY KEY,
+        category_name character varying(100) NOT NULL
+      )`,
+  );
+
+  pool.query(
+    `CREATE TABLE IF NOT EXISTS
       products(
-        id serial PRIMARY KEY,
-        name character varying(50) NOT NULL,
+        product_id serial PRIMARY KEY,
+        product_image character varying(50) NOT NULL,
+        product_name character varying(50) NOT NULL,
         price INT NOT NULL,
+        category_id INT REFERENCES categories(category_id),
         quantity INT NOT NULL
       )`,
   );
@@ -40,18 +50,11 @@ export const createTables = () => {
     `CREATE TABLE IF NOT EXISTS
           sales_record(
             sales_record_id serial PRIMARY KEY,
-            product_name character varying(100) NOT NULL,
+            products_name character varying(100) NOT NULL,
             buyers_name character varying(100) NOT NULL,
             price INT NOT NULL,
             amount INT NOT NULL,
             date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-          )`,
-  );
-  pool.query(
-    `CREATE TABLE IF NOT EXISTS
-          categories(
-            category_id serial PRIMARY KEY,
-            category_name character varying(100) NOT NULL
           )`,
   );
 };

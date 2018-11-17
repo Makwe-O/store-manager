@@ -6,6 +6,7 @@
     <title>Product|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <script src="js/jwt-decode.min.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -45,7 +46,7 @@
                <h2>Product</h2>
            </div>
 
-           <div>
+           <div class="single-product-page">
                 <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
                 <div>
                     <h4 class="card__title">Sony SPS</h4>
@@ -90,7 +91,8 @@
     </div>
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
-    <script src="js/redirect.js"></script>
+    <script src="js/adminAuth.js"></script>
+    <script src="js/getProduct.js"></script>
     <script src="js/editProduct.js"></script>
   </body>
 </html>

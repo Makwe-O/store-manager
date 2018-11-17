@@ -1,27 +1,23 @@
-const name = document.getElementById('name');
-const price = document.getElementById('price');
-const quantity = document.getElementById('quantity');
+const categoryName = document.getElementById('categoryName');
 const errorId = document.getElementById('errorId');
-const editProductForm = document.getElementById('editProductForm');
+const editCategoryForm = document.getElementById('editCategoryForm');
 
-function editProduct(e) {
+function editCategory(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/products/${id}`, {
+  fetch('http://localhost:3000/api/v1/categories/', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      name: name.value,
-      price: price.value,
-      quantity: quantity.value,
+      category_name: categoryName.value,
     }),
   })
     .then(response => response.json())
     .then((data) => {
       if (data.success === true) {
-        window.location.href = 'product-admin.html';
+        window.location.href = 'categories-admin.html';
       }
       errorId.innerHTML = `${data.message}`;
       errorId.style.display = 'block';
@@ -32,5 +28,4 @@ function editProduct(e) {
     .catch(error => console.log(error.message));
 }
 
-
-editProductForm.addEventListener('submit', editProduct);
+editCategoryForm.addEventListener('submit', editCategory);
