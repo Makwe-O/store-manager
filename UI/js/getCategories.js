@@ -8,7 +8,7 @@ fetch('http://localhost:3000/api/v1/categories/', {
   .then((data) => {
     let output = '';
     data.categories.forEach((category) => {
-      output += `<li>${category.category_name}</li>
+      output += `<li><a href="category-admin.html?${category.category_id}" class="btn--color__orange">${category.category_name}</a></li>
     `;
     });
     document.querySelector('.categories-list').innerHTML = output;

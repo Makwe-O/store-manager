@@ -4,5 +4,5 @@ import Validate from '../middleware/validate';
 
 const router = express.Router();
 router.post('/login', User.login);
-router.post('/signup', User.signup);
+router.post('/signup', Validate.validateSignup, User.signup);
 export default router;

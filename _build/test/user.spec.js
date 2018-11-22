@@ -64,70 +64,49 @@ describe('GET /auth/signup', function () {
       });
     });
   });
-  describe('GET /auth/signup', function () {
-    it('Should return status 201 if user is created', function (done) {
-      _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
-        name: 'Jide',
-        email: 'jide2@yahoo.com',
-        role: 'Admin',
-        password: 'qwerty'
-      }).end(function (err, res) {
-        expect(res.status).to.equal(201);
-        done();
-      });
-    });
-    it('Should return status 409 if email exist', function (done) {
-      _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
-        name: 'Jide',
-        email: 'jide1@yahoo.com',
-        role: 'Admin',
-        password: 'qwerty'
-      }).end(function (err, res) {
-        expect(res.status).to.equal(409);
-        done();
-      });
+
+  it('Should return status 409 if email exist', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
+      name: 'Jide',
+      email: 'jide1@yahoo.com',
+      role: 'Admin',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(409);
+      done();
     });
   });
-  // describe('GET /auth/signup', () => {
-  //   it('Should return status 201 if attendant is created', (done) => {
-  //     chai.request(server)
-  //       .post('/api/v1/auth/signup')
-  //       .send({
-  //         name: 'Jide',
-  //         email: 'jide10@yahoo.com',
-  //         role: 'Attendant',
-  //         password: 'qwerty',
-  //       })
-  //       .end((err, res) => {
-  //         expect(res.status).to.equal(201);
-  //         done();
-  //       });
-  //   });
-  //   it('Should return status 409 if email exist', (done) => {
-  //     chai.request(server)
-  //       .post('/api/v1/auth/signup')
-  //       .send({
-  //         name: 'Jide',
-  //         email: 'jide10@yahoo.com',
-  //         role: 'Attendant',
-  //         password: 'qwerty',
-  //       })
-  //       .end((err, res) => {
-  //         expect(res.status).to.equal(409);
-  //         done();
-  //       });
-  //   });
-  //   it('Should return status 200 if login details are correct', (done) => {
-  //     chai.request(server)
-  //       .post('/api/v1/auth/login')
-  //       .send({
-  //         email: 'jide10@yahoo.com',
-  //         password: 'qwerty',
-  //       })
-  //       .end((err, res) => {
-  //         expect(res.status).to.equal(200);
-  //         done();
-  //       });
-  //   });
-  // });
+});
+describe('GET /auth/signup', function () {
+  it('Should return status 201 if attendant is created', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
+      name: 'Jide',
+      email: 'jide10@yahoo.com',
+      role: 'Attendant',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(201);
+      done();
+    });
+  });
+  it('Should return status 409 if email exist', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
+      name: 'Jide',
+      email: 'jide10@yahoo.com',
+      role: 'Attendant',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(409);
+      done();
+    });
+  });
+  it('Should return status 200 if login details are correct', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/login').send({
+      email: 'jide10@yahoo.com',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(200);
+      done();
+    });
+  });
 });

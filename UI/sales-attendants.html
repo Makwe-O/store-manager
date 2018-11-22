@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <script src="js/jwt-decode.min.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -100,14 +101,15 @@
                     <div class="close">+</div>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <input type="text" class="" placeholder="Name"/>
-                        <input type="email" placeholder="Email Address"/>
+                    <form id="addSalesAttendantForm">
+                        <input type="text" class="" id="name" placeholder="Name"/>
+                        <input type="email" id="email" placeholder="Email Address"/>
                         <select id="role">
                             <option value="Attendant">Store Attendant</option>
                         </select>
-                        <input type="password" class="" placeholder="Password"/>
+                        <input type="password" id="password" class="" placeholder="Password"/>
                         <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                        <p class="text-center error-message" id="errorId"></p>
                     </form>
                 </div>
             </div>
@@ -115,5 +117,6 @@
         <script src="js/script.js"></script>
         <script src="js/logout.js"></script>
         <script src="js/adminAuth.js"></script>
+        <script src="js/addSalesAttendant.js"></script>
   </body>
 </html>

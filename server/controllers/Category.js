@@ -28,7 +28,7 @@ const Category = {
         found = true;
         return response.status(200).json({
           success: true,
-          product: res.rows[0],
+          category: res.rows[0],
         });
       }
       if (!found) {
@@ -62,7 +62,7 @@ const Category = {
   modifyCategory(request, response, next) {
     const { id } = request.params;
 
-    const { categoryName } = request.body;
+    const { category_name } = request.body;
     const keys = ['category_name'];
 
     const feilds = [];

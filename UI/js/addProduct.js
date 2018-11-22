@@ -16,10 +16,10 @@ function addProduct(e) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      image: image.value,
-      name: name.value,
+      product_image: image.value,
+      product_name: name.value,
       price: Number(price.value),
-      category: Number(category.value),
+      category_id: Number(category.value),
       quantity: Number(quantity.value),
     }),
   })

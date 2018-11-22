@@ -3,6 +3,8 @@
 var name = document.getElementById('name');
 var price = document.getElementById('price');
 var quantity = document.getElementById('quantity');
+var image = document.getElementById('image');
+var category = document.getElementById('category');
 var errorId = document.getElementById('errorId');
 var addProductsForm = document.getElementById('addProductsForm');
 
@@ -16,8 +18,10 @@ function addProduct(e) {
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      name: name.value,
+      product_image: image.value,
+      product_name: name.value,
       price: Number(price.value),
+      category_id: Number(category.value),
       quantity: Number(quantity.value)
     })
   }).then(function (response) {

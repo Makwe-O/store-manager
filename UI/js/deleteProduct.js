@@ -1,8 +1,9 @@
-const deleteCategoryForm = document.getElementById('deleteCategoryForm');
 
-function deleteCategory(e) {
+const deleteProductForm = document.getElementById('deleteProductForm');
+
+function deleteProduct(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/categories/${categoryId}`, {
+  fetch(`http://localhost:3000/api/v1/products/${productId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -12,7 +13,7 @@ function deleteCategory(e) {
     .then(response => response.json())
     .then((data) => {
       if (data.success === true) {
-        window.location.href = 'categories-admin.html';
+        window.location.href = 'products-admin.html';
       }
       errorId.innerHTML = `${data.message}`;
       errorId.style.display = 'block';
@@ -23,4 +24,4 @@ function deleteCategory(e) {
     .catch(error => console.log(error.message));
 }
 
-deleteCategoryForm.addEventListener('submit', deleteCategory);
+deleteProductForm.addEventListener('submit', deleteProduct);

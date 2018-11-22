@@ -1,7 +1,9 @@
 import express from 'express';
+import expressValidator from 'express-validator';
 import Category from '../controllers/Category';
 import Validate from '../middleware/validate';
 import Authenticate from '../middleware/auth';
+
 
 const router = express.Router();
 router.get('/', Category.getAllCategory);

@@ -4,12 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var validate = {
-  isValidEmail: function isValidEmail(req, res, next) {
-    var emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/ig;
-    if (emailRegex.test(req.body.email).trim().toLowercase()) {
+  validateSignup: function validateSignup(req, res, next) {
+    req.sanitizeBody('name');
+    req.checkBody('email', 'Email not valid!').isEmail();
+    var errors = req.validationErrors();
+    if (errors) {
       res.status(400).send({
         success: false,
-        message: 'Enter correct email'
+        message: 'Email not valid!'
       });
       return;
     }
@@ -71,7 +73,7 @@ var validate = {
     next();
   },
   emptyValueProduct: function emptyValueProduct(req, res, next) {
-    if (!req.body.name) {
+    if (!req.body.product_name) {
       res.status(400).send({
         success: false,
         message: 'Name cannot be empty'

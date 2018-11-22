@@ -1,3 +1,4 @@
+
 document.querySelector('#button').addEventListener('click', () => {
   document.querySelector('.modal').style.display = 'flex';
 });
@@ -11,7 +12,10 @@ document.querySelector('#delete-btn').addEventListener('click', () => {
   document.querySelector('.deleteModal').style.display = 'flex';
 });
 
-document.querySelector('.deleteClose').addEventListener('click', () => {
+document.querySelector('.delete-close').addEventListener('click', () => {
+  document.querySelector('.deleteModal').style.display = 'none';
+});
+document.querySelector('#deleteBtnNo').addEventListener('click', () => {
   document.querySelector('.deleteModal').style.display = 'none';
 });
 

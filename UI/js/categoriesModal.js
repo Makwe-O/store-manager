@@ -8,8 +8,9 @@ fetch('http://localhost:3000/api/v1/categories/', {
   .then((data) => {
     let output = '';
     let counter = 1;
+    output += '<option value="" disabled selected>Select Category</option>';
     data.categories.forEach((category) => {
-      output += `<option value="${counter}">${category.category_name}</li>
+      output += `<option value="${category.category_id}">${category.category_name}</li>
     `;
       counter += 1;
     });

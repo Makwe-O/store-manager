@@ -16,6 +16,10 @@ var _jsonwebtoken = require('jsonwebtoken');
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
+var _expressValidator = require('express-validator');
+
+var _expressValidator2 = _interopRequireDefault(_expressValidator);
+
 var _productRoutes = require('./server/routes/product-routes');
 
 var _productRoutes2 = _interopRequireDefault(_productRoutes);
@@ -38,6 +42,7 @@ var app = (0, _express2.default)();
 app.use((0, _cors2.default)());
 app.use(_express2.default.json());
 app.use(_express2.default.static('UI'));
+app.use((0, _expressValidator2.default)());
 // Routes to handle requests
 app.use('/api/v1/products', _productRoutes2.default);
 app.use('/api/v1/sales', _saleRoutes2.default);

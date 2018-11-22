@@ -19,9 +19,10 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
-            name: 'Caprisone',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Caprisone',
             price: 2200,
-            category: 1,
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -48,9 +49,10 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
-            name: 'Caprisone',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Caprisone',
             price: 2200,
-            category: 1,
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}r`)
@@ -79,9 +81,10 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
-            name: 'Caprisone',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Caprisone',
             price: 2200,
-            category: 1,
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -143,7 +146,9 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
             price: 2200,
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -166,7 +171,9 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
-            name: 'Sony Sps',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Caprisone',
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -189,8 +196,10 @@ describe('POST /products', () => {
         chai.request(server)
           .post('/api/v1/products')
           .send({
-            name: 'Sony Sps',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Caprisone',
             price: 2200,
+            category_id: 1,
           })
           .set('Authorization', `Bearer ${adminToken}`)
           .end((err, res) => {
@@ -226,8 +235,10 @@ describe('PUT /products', () => {
         chai.request(server)
           .put(`/api/v1/products/${1}`)
           .send({
-            name: 'Camera',
+            product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+            product_name: 'Nikon d3000',
             price: 2200,
+            category_id: 1,
             quantity: 20,
           })
           .set('Authorization', `Bearer ${adminToken}`)
@@ -243,8 +254,10 @@ describe('PUT /products', () => {
     chai.request(server)
       .put(`/api/v1/products/${1}`)
       .send({
-        name: 'Camera',
-        price: 4400,
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Nikon d3000',
+        price: 2200,
+        category_id: 1,
         quantity: 20,
       })
       .end((err, res) => {

@@ -8,6 +8,10 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _expressValidator = require('express-validator');
+
+var _expressValidator2 = _interopRequireDefault(_expressValidator);
+
 var _Category = require('../controllers/Category');
 
 var _Category2 = _interopRequireDefault(_Category);

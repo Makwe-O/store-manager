@@ -43,8 +43,8 @@
                     <p>Tuesday, 9th October 2018 11:00</p>
                 </div>
                 <div>
-                    <form action="#" class="search-form">
-                        <input type="text" placeholder="Search.." name="search">
+                    <form id="searchProductsForm" class="search-form">
+                        <input type="text" placeholder="Search.." id="search" name="search">
                         <button class="btn-search" type="submit" value="Search">Search</button>
                     </form>
                 </div>
@@ -53,10 +53,10 @@
             <div class="btn__margin-bottom btn__align--right">
                 <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add Product</a>
             </div>
-    
+            
             <div class="card-grid">
                
-                <div class="card">
+                <!-- <div class="card">
                     <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&h=350" alt="camera">
                     <div class="card__body ">
                         <h4 class="card__title">Sony SPS</h4>
@@ -72,7 +72,7 @@
                         </div>
                         
                     </div>
-                </div>               
+                </div>                -->
             </div>
            
             
@@ -94,9 +94,7 @@
                     <input type="text" id="image" placeholder="Insert Product Url">
                     <input type="number" class="" id="price" placeholder="Price"/>
                     <select class="category-list" id="category">
-                        <option value="" disabled selected>Select Category</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="leisure">Leisure</option>
+                       
                     </select>
                     <input type="number" class="" id = "quantity" placeholder="Quantity in Inventory"/>
                     <input type="submit" class="btn btn__border--orange"  value="Add"/>
@@ -109,7 +107,8 @@
     <script src="js/logout.js"></script>
     <script src="js/adminAuth.js"></script>
     <script src="js/getProducts.js"></script>
-    <script src="js/addProductModal.js"></script>
+    <script src="js/searchProducts.js"></script>
+    <script src="js/categoriesModal.js"></script>
     <script src="js/addProduct.js"></script>
   </body>
 </html>

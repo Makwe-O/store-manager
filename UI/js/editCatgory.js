@@ -4,7 +4,7 @@ const editCategoryForm = document.getElementById('editCategoryForm');
 
 function editCategory(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/categories/', {
+  fetch(`http://localhost:3000/api/v1/categories/${categoryId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -16,8 +16,9 @@ function editCategory(e) {
   })
     .then(response => response.json())
     .then((data) => {
+      console.log(data);
       if (data.success === true) {
-        window.location.href = 'categories-admin.html';
+        window.location.href = `categories-admin.html?${categoryId}`;
       }
       errorId.innerHTML = `${data.message}`;
       errorId.style.display = 'block';

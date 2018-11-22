@@ -27,9 +27,10 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
-        name: 'Caprisone',
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Caprisone',
         price: 2200,
-        category: 1,
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(201);
@@ -48,9 +49,10 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
-        name: 'Caprisone',
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Caprisone',
         price: 2200,
-        category: 1,
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken + 'r').end(function (err, res) {
         expect(res.status).to.equal(401);
@@ -70,9 +72,10 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
-        name: 'Caprisone',
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Caprisone',
         price: 2200,
-        category: 1,
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(409);
@@ -120,7 +123,9 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
         price: 2200,
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.body).to.be.an('object');
@@ -136,7 +141,9 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
-        name: 'Sony Sps',
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Caprisone',
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.body).to.be.an('object');
@@ -152,8 +159,10 @@ describe('POST /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).post('/api/v1/products').send({
-        name: 'Sony Sps',
-        price: 2200
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Caprisone',
+        price: 2200,
+        category_id: 1
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
@@ -179,8 +188,10 @@ describe('PUT /products', function () {
     }).end(function (err, res) {
       adminToken = res.body.token;
       _chai2.default.request(_index2.default).put('/api/v1/products/' + 1).send({
-        name: 'Camera',
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Nikon d3000',
         price: 2200,
+        category_id: 1,
         quantity: 20
       }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
         expect(res.status).to.equal(200);
@@ -191,8 +202,10 @@ describe('PUT /products', function () {
 
   it('should return status of 403 if user isnt authorized to modify product', function (done) {
     _chai2.default.request(_index2.default).put('/api/v1/products/' + 1).send({
-      name: 'Camera',
-      price: 4400,
+      product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+      product_name: 'Nikon d3000',
+      price: 2200,
+      category_id: 1,
       quantity: 20
     }).end(function (err, res) {
       expect(res.status).to.equal(403);

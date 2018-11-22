@@ -1,11 +1,13 @@
 const validate = {
 
-  isValidEmail(req, res, next) {
-    const emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/ig;
-    if (emailRegex.test(req.body.email).trim().toLowercase()) {
+  validateSignup(req, res, next) {
+    req.sanitizeBody('name');
+    req.checkBody('email', 'Email not valid!').isEmail();
+    const errors = req.validationErrors();
+    if (errors) {
       res.status(400).send({
         success: false,
-        message: 'Enter correct email',
+        message: 'Email not valid!',
       });
       return;
     }
@@ -68,7 +70,7 @@ const validate = {
   },
 
   emptyValueProduct(req, res, next) {
-    if (!req.body.name) {
+    if (!req.body.product_name) {
       res.status(400).send({
         success: false,
         message: 'Name cannot be empty',

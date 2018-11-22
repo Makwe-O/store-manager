@@ -12,7 +12,10 @@ document.querySelector('#delete-btn').addEventListener('click', function () {
   document.querySelector('.deleteModal').style.display = 'flex';
 });
 
-document.querySelector('.deleteClose').addEventListener('click', function () {
+document.querySelector('.delete-close').addEventListener('click', function () {
+  document.querySelector('.deleteModal').style.display = 'none';
+});
+document.querySelector('#deleteBtnNo').addEventListener('click', function () {
   document.querySelector('.deleteModal').style.display = 'none';
 });
 

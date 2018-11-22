@@ -248,7 +248,7 @@ main {
     
 }
 /*Modal*/
-.modal{
+.modal, .deleteModal{
     position: absolute;
     top:0;
     background:rgba(0, 0, 0, 0.7);
@@ -269,7 +269,7 @@ main {
     padding:30px;
     position: relative;
 }
-.close{
+.close, .delete-close{
     position: absolute;
     font-size: 40px;
     transform: rotate(45deg);
@@ -278,6 +278,9 @@ main {
     cursor: pointer;
 }
 
+input[type="submit"]{
+    cursor:pointer;
+}
 
 .card{ 
     position: relative;
@@ -290,6 +293,11 @@ main {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
     box-shadow: 0px 4px 8px #3f3f3f;
+    transition-timing-function: ease-in;
+    transition: 0.2s;
+}
+.card:hover{
+    transform: scale(1.05);
 }
 .card-grid {
     display: grid;
@@ -361,6 +369,34 @@ main {
 }
 .card-btn__modal{
     margin-top:60px
+}
+
+th{
+    text-align: left;
+    padding: 20px;
+    background:#ed792b;
+    border:1px solid #3F3F3F
+}
+td{
+    padding:20px
+}
+/* td:hover{
+    background: #e1e1e1;
+} */
+#cart-content{
+   width: 100%;
+    margin:30px 0px;
+}
+.table-overflow{
+    max-width: 100%;
+    overflow-x: auto;
+}
+.trash{
+    font-size:30px;
+    color:#ed792b;
+}
+.trash:hover{
+    color:#944d1d;
 }
     
 @media only screen and (max-width:1024px) {

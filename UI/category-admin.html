@@ -45,8 +45,8 @@
             
             <div class="user-details">
                 <h2>Categories</h2>
-                <ul>
-                    <li>Electronics</li>    
+                <ul class="categories-list">
+                 
                 </ul>
             </div>
 
@@ -67,8 +67,8 @@
                     <div class="close">+</div>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <input type="text" class="" placeholder="New Category Name"/>
+                    <form id="editCategoryForm">
+                        <input type="text" class="" id="categoryName" placeholder="New Category Name"/>
                         <input type="submit" class="btn btn__border--orange"  value="Edit"/>
                     </form>
                 </div>
@@ -82,13 +82,15 @@
                 <div class="modal-title text-center">
                     <h2>Delete Category?</h2>
                 </div>
-                <div class="close deleteClose">+</div>
+                <div class="close delete-close">+</div>
             </div>
             <div class="modal-body">
-                <div  class="card-btn card-btn__modal">
-                    <a href="categories-admin.html"  class="btn btn__color--dark btn__border--orange">Yes</a>
-                    <a href="categories-admin.html" class="btn btn__color--dark btn__border--orange">No</a>
-                </div>
+                <form id="deleteCategoryForm">
+                    <div  class="card-btn card-btn__modal">
+                        <input type="submit"  class="btn btn__color--dark btn__border--orange" value="Yes"></a>
+                        <a href="#" id="deleteBtnNo" class="btn btn__color--dark btn__border--orange">No</a>
+                    </div>
+                </form> 
             </div>
         </div>
     </div>
@@ -101,6 +103,9 @@
       <script src="js/script.js"></script>
       <script src="js/logout.js"></script>
       <script src="js/adminAuth.js"></script>
+      <script src="js/getCategory.js"></script>
+      <script src="js/editCatgory.js"></script>
+      <script src="js/deleteCategory.js"></script>
   </body>
 </html>
     

@@ -50,13 +50,13 @@ var Product = {
   },
   createProduct: function createProduct(request, response, next) {
     var _request$body = request.body,
-        image = _request$body.image,
-        name = _request$body.name,
+        product_image = _request$body.product_image,
+        product_name = _request$body.product_name,
         price = _request$body.price,
-        category = _request$body.category,
+        category_id = _request$body.category_id,
         quantity = _request$body.quantity;
 
-    pool.query('SELECT * FROM products WHERE product_name= $1', [name], function (err, res) {
+    pool.query('SELECT * FROM products WHERE product_name= $1', [product_name], function (err, res) {
       if (err) return next(err);
       if (res.rowCount !== 0) {
         return response.status(409).json({
@@ -64,7 +64,7 @@ var Product = {
           message: 'Product already exists'
         });
       }
-      pool.query('INSERT INTO products(product_image, product_name, price, category_id, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *', [image, name, price, category, quantity], function (err, res) {
+      pool.query('INSERT INTO products(product_image, product_name, price, category_id, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *', [product_image, product_name, price, category_id, quantity], function (err, res) {
         if (err) return next(err);
         response.status(201).json({
           success: true,
@@ -84,7 +84,7 @@ var Product = {
         quantity = _request$body2.quantity;
 
 
-    var keys = ['product_image', 'product_name', 'price', 'category_id', 'quantity'];
+    var keys = ['product_name', 'product_image', 'price', 'category_id', 'quantity'];
 
     var feilds = [];
 
@@ -96,7 +96,12 @@ var Product = {
       pool.query('Update products SET ' + feild + '=($1) WHERE product_id=($2)', [request.body[feild], id], function (err, res) {
         if (err) return next(err);
 
-        if (index === feilds.length - 1) response.status(200).send({ message: 'Product Updated successfully' });
+        if (index === feilds.length - 1) {
+          response.status(200).send({
+            success: true,
+            message: 'Product Updated successfully'
+          });
+        }
       });
     });
   },
@@ -105,7 +110,9 @@ var Product = {
 
     pool.query('DELETE FROM products WHERE product_id=($1)', [id], function (err, res) {
       if (err) return next(err);
-      response.status(200).send({ message: 'Product Deleted Successfully' });
+      response.status(200).send({
+        success: true,
+        message: 'Product Deleted Successfully' });
     });
   }
 };

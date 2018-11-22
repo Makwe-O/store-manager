@@ -1,10 +1,10 @@
 'use strict';
 
-var deleteCategoryForm = document.getElementById('deleteCategoryForm');
+var deleteProductForm = document.getElementById('deleteProductForm');
 
-function deleteCategory(e) {
+function deleteProduct(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/categories/' + categoryId, {
+  fetch('http://localhost:3000/api/v1/products/' + productId, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ function deleteCategory(e) {
     return response.json();
   }).then(function (data) {
     if (data.success === true) {
-      window.location.href = 'categories-admin.html';
+      window.location.href = 'products-admin.html';
     }
     errorId.innerHTML = '' + data.message;
     errorId.style.display = 'block';
@@ -26,4 +26,4 @@ function deleteCategory(e) {
   });
 }
 
-deleteCategoryForm.addEventListener('submit', deleteCategory);
+deleteProductForm.addEventListener('submit', deleteProduct);

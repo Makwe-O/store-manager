@@ -38,7 +38,7 @@ var Category = {
         found = true;
         return response.status(200).json({
           success: true,
-          product: res.rows[0]
+          category: res.rows[0]
         });
       }
       if (!found) {
@@ -72,7 +72,7 @@ var Category = {
   },
   modifyCategory: function modifyCategory(request, response, next) {
     var id = request.params.id;
-    var categoryName = request.body.categoryName;
+    var category_name = request.body.category_name;
 
     var keys = ['category_name'];
 

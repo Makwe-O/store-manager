@@ -84,7 +84,7 @@ var User = {
         if (res.rowCount !== 0) {
           return response.status(409).json({
             success: false,
-            message: 'Mail Exists'
+            message: 'Mail Already Exists'
           });
         }
 
