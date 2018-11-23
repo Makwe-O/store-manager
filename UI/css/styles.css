@@ -427,5 +427,12 @@ td{
     .nav-toggle{
        display: block;
     }
+    .dashboard-header__title__container-right > a{
+        position: relative;
+        top:0px;
+    }
+    .btn__margin-top--mobile{
+        margin-top:30px;
+    }
    
 }

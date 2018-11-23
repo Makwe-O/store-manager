@@ -45,6 +45,3 @@ function addProductToCart(e) {
 
 // listeners
 cartProducts.addEventListener('click', addProductToCart);
-
-
-// deleteCategoryForm.addEventListener('submit', deleteCategory);

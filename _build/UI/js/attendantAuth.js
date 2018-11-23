@@ -6,5 +6,7 @@ if (!token) {
 }
 var decoded = jwt_decode(token);
 if (decoded.role !== 'Attendant') {
-  window.location.href = 'dashboard-admin.html';
+  window.location.href = 'sales-attendants-admin.html';
 }
+
+document.querySelector('.dashboard-header p').innerHTML = decoded.name;

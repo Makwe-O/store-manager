@@ -18,6 +18,29 @@ _chai2.default.use(_chaiHttp2.default);
 var expect = _chai2.default.expect;
 
 
+describe('POST /sales', function () {
+  before(function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/signup').send({
+      name: 'ayo',
+      email: 'jide12@yahoo.com',
+      role: 'Admin',
+      password: 'qwerty'
+    }).end(function () {
+      done();
+    });
+  });
+  it('should return status 201 when sale is created', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      user_id: 2,
+      product_id: 2,
+      sales_amount: 22
+    }).end(function (err, res) {
+      expect(res.status).to.equal(201);
+      done();
+    });
+  });
+});
+
 describe('GET /sales', function () {
   it('should return all sales records', function (done) {
     _chai2.default.request(_index2.default).get('/api/v1/sales').end(function (err, res) {
@@ -25,76 +48,18 @@ describe('GET /sales', function () {
       done(err);
     });
   });
-});
 
-describe('POST /sales', function () {
-  it('should return status 201 when sale is created', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      buyers_name: 'Mr Mike',
-      price: 2200,
-      amount: 22
-    }).end(function (err, res) {
-      expect(res.status).to.equal(201);
-      done();
-    });
-  });
   it('should return status 400 when no value is passed', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({}).end(function (err, res) {
       expect(res.status).to.equal(400);
       done();
     });
   });
-  it('Shoud return status of 400 if Productname is missing ', function (done) {
+
+  it('Shoud return status of 400 if User_id is missing ', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      // product_name: 'Caprisone',
-      price: 2200,
-      buyers_name: 'Mr Mike',
-      amount: 22
-    }).end(function (err, res) {
-      expect(res.status).to.equal(400);
-      done();
-    });
-  });
-  it('Shoud return status of 400 if price is missing ', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      // price: 2200,
-      buyers_name: 'Mr Mike',
-      amount: 22
-    }).end(function (err, res) {
-      expect(res.status).to.equal(400);
-      done();
-    });
-  });
-  it('Shoud return status of 400 if buyers name is missing ', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      price: 2200,
-      // buyers_name: 'Mr Mike',
-      amount: 22
-    }).end(function (err, res) {
-      expect(res.status).to.equal(400);
-      done();
-    });
-  });
-  it('Shoud return status of 400 if amount is missing ', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      price: 2200,
-      buyers_name: 'Mr Mike'
-      // amount: 22,
-    }).end(function (err, res) {
-      expect(res.status).to.equal(400);
-      done();
-    });
-  });
-  it('Shoud return status of 400 if price is not a number ', function (done) {
-    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      price: '2200',
-      buyers_name: 'Mr Mike',
-      amount: 22
+      product_id: 2,
+      sales_amount: 22
     }).end(function (err, res) {
       expect(res.status).to.equal(400);
       expect(res.body).to.have.property('message');
@@ -104,14 +69,69 @@ describe('POST /sales', function () {
       done();
     });
   });
-  it('Shoud return status of 400 if quantity is not a number ', function (done) {
+  it('Shoud return status of 400 if User_id is not a number ', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/sales').send({
-      product_name: 'Caprisone',
-      price: 2200,
-      buyers_name: 'Mr Mike',
-      amount: '22'
+      user_id: '2',
+      product_id: 2,
+      sales_amount: 22
     }).end(function (err, res) {
       expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if Product_id is missing ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      user_id: 2,
+      sales_amount: 22
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if Product_id is not a number ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      user_id: 2,
+      product_id: '2',
+      sales_amount: 22
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if Sale Amount is missing ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      user_id: 2,
+      product_id: 2
+
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
+      expect(res.body).to.have.property('success');
+      expect(res.body.success).to.be.a('boolean');
+      expect(res.body.success).to.equal(false);
+      done();
+    });
+  });
+  it('Shoud return status of 400 if Sale Amount is not a number ', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/sales').send({
+      user_id: 2,
+      product_id: 2,
+      sales_amount: '22'
+    }).end(function (err, res) {
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property('message');
       expect(res.body).to.have.property('success');
       expect(res.body.success).to.be.a('boolean');
       expect(res.body.success).to.equal(false);
@@ -119,6 +139,7 @@ describe('POST /sales', function () {
     });
   });
 });
+
 describe('GET /sales/:id', function () {
   it('Endpoint should return 404 if an invalid id is passed', function (done) {
     _chai2.default.request(_index2.default).get('/api/v1/sales/' + 100).end(function (err, res) {

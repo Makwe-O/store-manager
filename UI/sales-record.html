@@ -41,53 +41,78 @@
                     <p>Tuesday, 9th October 2018 11:00</p>
                 </div>
                 <div class="dashboard-header__title__container-right">
-                    <form action="#" class="search-form">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button class="btn-search" type="submit" value="Search">Search</button>
-                    </form>
+                   
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
 
-            <div class="btn__margin-bottom ">
+            <div class="btn__margin-bottom btn__margin-top--mobile">
                 <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add Sale Record</a>
             </div>
             <h2>Sales Record</h2>
-            <div class="table-grid--6">
-                <span class="grid-header"><strong>Order Id</strong></span>
-                <span class="grid-header"><strong>Prod. Name</strong></span>
-                <span class="grid-header"><strong>Buyers Name</strong></span>
-                <span class="grid-header"><strong>Price</strong></span>
+            <div class="table-overflow">
+            <table id="cart-content" >
+                <thead>
+                    <tr>
+                        <th>Sales Record Id</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody class="sale-body"></tbody>
+            </table>
+            </div>
+            <!-- <div class="table-grid--6">
+                <span class="grid-header"><strong>Sales Record Id</strong></span>
+                <span class="grid-header"><strong>Product Name</strong></span>
+                <span class="grid-header"><strong>Product Price</strong></span>
                 <span class="grid-header"><strong>Amount</strong></span>
+                <span class="grid-header"><strong>Total</strong></span>
                 <span class="grid-header"><strong>Date</strong></span>
-
+                
+                
                 <span>101</span>
                 <span>Sony SPS 1</span>
                 <span>Micheal Jordan</span>
                 <span>22000</span>
                 <span>1</span>
                 <span>13/07/12</span>
+                
 
-                <span>102</span>
-                <span>Sony SPS 1</span>
-                <span>Segun Tito</span>
-                <span>22000</span>
-                <span>2</span>
-                <span>14/07/12</span>
-
-                <span>103</span>
-                <span>Sony SPS 3</span>
-                <span>Fisyo Dara</span>
-                <span>10000</span>
-                <span>1</span>
-                <span>14/07/12</span>
-
-            </div>
+            </div> -->
         </main>
-    </div>    
+    </div>  
+    
+    <!-- Add attendant modal -->
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center">
+                    <h2>Add Sales Record</h2>
+                </div>
+                <div class="close">+</div>
+            </div>
+            <div class="modal-body">
+                <form id="addSalesRecordForm">
+                    <select class="product-list" id="product">
+                       
+                    </select>
+                    <input type="number" class="" id="amount" placeholder="Amount"/>
+                    <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                    <p class="text-center error-message" id="errorId"></p>
+                </form>
+            </div>
+        </div>
+    </div> 
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/attendantAuth.js"></script>
+    <script src="js/productsModal.js"></script>
+    <script src="js/addSalesRecord.js"></script>
+    <script src="js/getSalesRecord.js"></script>
       
   </body>
 </html>

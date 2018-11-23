@@ -28,42 +28,42 @@ var validate = {
     next();
   },
   emptyValueSales: function emptyValueSales(req, res, next) {
-    if (!req.body.product_name) {
+    if (!req.body.user_id) {
       res.status(400).send({
         success: false,
-        message: 'Product name cannot be blank'
+        message: 'User ID cannot be empty'
       });
       return;
     }
-    if (!req.body.price) {
+    if (typeof req.body.user_id !== 'number') {
       res.status(400).send({
         success: false,
-        message: 'Price cannot be blank'
+        message: 'User ID is not a number'
       });
       return;
     }
-    if (typeof req.body.price !== 'number') {
+    if (!req.body.product_id) {
       res.status(400).send({
         success: false,
-        message: 'Price is not a number'
+        message: 'Product ID cannot be empty'
       });
       return;
     }
-    if (!req.body.buyers_name) {
+    if (typeof req.body.product_id !== 'number') {
       res.status(400).send({
         success: false,
-        message: 'Buyers name cannot be empty'
+        message: 'Product ID is not a number'
       });
       return;
     }
-    if (!req.body.amount) {
+    if (!req.body.sales_amount) {
       res.status(400).send({
         success: false,
         message: 'Amount cannot be empty'
       });
       return;
     }
-    if (typeof req.body.amount !== 'number') {
+    if (typeof req.body.sales_amount !== 'number') {
       res.status(400).send({
         success: false,
         message: 'Amount is not a number'

@@ -33,7 +33,7 @@ var createTables = exports.createTables = function createTables() {
 
   pool.query('CREATE TABLE IF NOT EXISTS\n      users(\n        user_id serial PRIMARY KEY,\n        name character varying(50) NOT NULL,\n        email character varying(100) NOT NULL,\n        role character varying(50) NOT NULL,\n        password character varying(100) NOT NULL\n      )');
 
-  pool.query('CREATE TABLE IF NOT EXISTS\n          sales_record(\n            sales_record_id serial PRIMARY KEY,\n            products_name character varying(100) NOT NULL,\n            buyers_name character varying(100) NOT NULL,\n            price INT NOT NULL,\n            amount INT NOT NULL,\n            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n          )');
+  pool.query('CREATE TABLE IF NOT EXISTS\n          sales_record(\n            sales_record_id serial PRIMARY KEY,\n            user_id INT REFERENCES users(user_id),\n            product_id INT REFERENCES products(product_id),\n            sales_amount INT NOT NULL,\n            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n          )');
 };
 
 /**

@@ -1,8 +1,10 @@
-const shoppingCartContent = document.querySelector('#cart-content tbody');
-const clearCartBtn = document.querySelector('.clear-cart');
+'use strict';
+
+var shoppingCartContent = document.querySelector('#cart-content tbody');
+var clearCartBtn = document.querySelector('.clear-cart');
 
 function getProductFormLocaleStorage() {
-  let localStorageProducts;
+  var localStorageProducts = void 0;
   if (localStorage.getItem('localStorageProducts') === null) {
     localStorageProducts = [];
   } else {
@@ -13,33 +15,21 @@ function getProductFormLocaleStorage() {
 
 // loads when document is ready and adds products from local storage
 function getFromLocaleStorage() {
-  const productsLS = getProductFormLocaleStorage();
+  var productsLS = getProductFormLocaleStorage();
   console.log(productsLS);
   // Check if cart is empty
   if (productsLS.length === 0) {
     // Create empty cart error message
-    const row = document.createElement('h3');
+    var row = document.createElement('h3');
     row.innerHTML = '<h3>Cart is currently empty</h3>';
     shoppingCartContent.appendChild(row);
   } else {
-    productsLS.forEach((productLS) => {
-    // Create rows
-      const row = document.createElement('tr');
+    productsLS.forEach(function (productLS) {
+      // Create rows
+      var row = document.createElement('tr');
 
       // Print the contents
-      row.innerHTML = `
-      <tr>
-        <td>
-            <img src="${productLS.image}" width=150>
-        </td>
-        <td>${productLS.title}</td>
-        <td>${productLS.price}</td>
-        <td><input type="number" value="1"</td>
-        <td>
-            <a href="#" class="remove" data-id="${productLS.id}"><i class="fas fa-trash-alt trash"></i></a>
-        </td>
-    </tr>
-      `;
+      row.innerHTML = '\n      <tr>\n        <td>\n            <img src="' + productLS.image + '" width=150>\n        </td>\n        <td>' + productLS.title + '</td>\n        <td>' + productLS.price + '</td>\n        <td><input type="number" value="1"</td>\n        <td>\n            <a href="#" class="remove" data-id="' + productLS.id + '"><i class="fas fa-trash-alt trash"></i></a>\n        </td>\n    </tr>\n      ';
       shoppingCartContent.appendChild(row);
     });
   }
@@ -48,10 +38,10 @@ function getFromLocaleStorage() {
 // Function to remove selected product from local storage
 function removeProductLocalStorage(localStorageProductId) {
   // get local storage data
-  const productsLS = getProductFormLocaleStorage();
+  var productsLS = getProductFormLocaleStorage();
   console.log(productsLS);
   // loop through array to find index
-  productsLS.forEach((productLS, index) => {
+  productsLS.forEach(function (productLS, index) {
     if (productLS.id === localStorageProductId) {
       console.log(productsLS.splice(index, 1));
     }
@@ -62,15 +52,15 @@ function removeProductLocalStorage(localStorageProductId) {
 
 // Function to clear cart from local storage
 function clearCartLocalStorage() {
-  let productLS = getProductFormLocaleStorage();
+  var productLS = getProductFormLocaleStorage();
   productLS = [];
   localStorage.setItem('localStorageProducts', JSON.stringify(productLS));
 }
 
 // remove product from cart
 function removeProduct(e) {
-  let localStorageProduct;
-  let localStorageProductId;
+  var localStorageProduct = void 0;
+  var localStorageProductId = void 0;
   if (e.target.classList.contains('trash')) {
     e.target.parentElement.parentElement.parentElement.remove();
     localStorageProduct = e.target.parentElement.parentElement.parentElement;
@@ -89,7 +79,6 @@ function clearCart() {
   // Link back to sales record page
   window.location.href = 'sales-record.html';
 }
-
 
 document.addEventListener('DOMContentLoaded', getFromLocaleStorage);
 shoppingCartContent.addEventListener('click', removeProduct);

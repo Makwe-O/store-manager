@@ -25,8 +25,8 @@
             </header>
         
             <ul>
-                <li><a  class="active" href="dashboard-admin.html">Dashboard</a></li>
-                <li><a href="sales-attendants.html">Sales Attendants</a></li>
+                <li><a href="sales-attendants-admin.html">Sales Attendants</a></li>
+                <li><a href="sales-record-admin.html">Sales Records</a></li>
                 <li><a href="products-admin.html">Products</a></li>
                 <li><a href="categories-admin.html">Categories</a></li>
                 <li><a href="#" id="logout">Logout</a></li>
@@ -48,6 +48,10 @@
                         </form>
                         <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                     </div>
+                </div>
+
+                <div class="btn__align--right btn__margin-bottom">
+                    <a href="#" id="button" class="btn btn__color--dark btn__border--orange">Add Sales Attendant</a>
                 </div>
     
 
@@ -89,13 +93,31 @@
         </main>
     </div>
      
-      <!-- <footer>
-          <div class="container">
-            <p class="text-center">Copyrigth 2018</p>
-          </div>
-      </footer> -->
-      <script src="js/script.js"></script>
-      <script src="js/logout.js"></script>
-      <script src="js/adminAuth.js"></script>
+    <!--Modal-->
+    <div class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title text-center">
+                <h2>Add Sales Attendant</h2>
+            </div>
+            <div class="close">+</div>
+        </div>
+        <div class="modal-body">
+            <form id="addSalesAttendantForm">
+                <input type="text" class="" id="name" placeholder="Name"/>
+                <input type="email" id="email" placeholder="Email Address"/>
+                <select id="role">
+                    <option value="Attendant">Store Attendant</option>
+                </select>
+                <input type="password" id="password" class="" placeholder="Password"/>
+                <input type="submit" class="btn btn__border--orange"  value="Add"/>
+                <p class="text-center error-message" id="errorId"></p>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/adminAuth.js"></script>
   </body>
 </html>

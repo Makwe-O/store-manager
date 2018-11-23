@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <title>Cart|Store Manager</title>
+    <title>Sales Attendant|Store Manager</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -12,14 +12,13 @@
   <body>
     <div id="wrapper">
 
-        <!--Sidebar-->
+         <!--Sidebar-->
         <div class="dashboard-nav">
             <div class="nav-toggle" id="toggle" onclick="toggleSidebar()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-
             <header class="dashboard-header text-center">
                 <h1 class="dashboard-header__title">Store Manager</h1>
                 <h3>Welcome</h3>
@@ -27,60 +26,56 @@
             </header>
         
             <ul>
-                <!-- <li><a class="active" href="dashboard.html">Dashboard</a></li> -->
-                <li><a href="sales-record.html">Sales Record</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="sales-attendants-admin.html">Sales Attendants</a></li>
+                <li><a href="sales-record-admin.html">Sales Records</a></li>
+                <li><a href="products-admin.html">Products</a></li>
+                <li><a href="categories-admin.html">Categories</a></li>
                 <li><a href="#" id="logout">Logout</a></li>
-            </ul>
-        
+            </ul>   
         </div>
 
-        <!--Main Content-->
+         <!--Main Content-->
         <main>
+               
             <div class="dashboard-header__title__container">
                 <div class="dashboard-header__title">
-                    <h1>STORE ATTENDANT</h1>
+                    <h1>STORE ADMIN</h1>
                     <p>Tuesday, 9th October 2018 11:00</p>
                 </div>
-                <div>
-                    <!-- <form action="#" class="search-form">
+                <div class="dashboard-header__title__container-right">
+                    <form action="#" class="search-form">
                         <input type="text" placeholder="Search.." name="search">
                         <button class="btn-search" type="submit" value="Search">Search</button>
-                    </form> -->
-                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    </form>
+                   
                 </div>
             </div>
-            
-            <h2 class="text-center">Cart</h2>
+
+            <h2>Sales Record</h2>
             <div class="table-overflow">
-                <table id="cart-content" >
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <table id="cart-content" >
+                <thead>
+                    <tr>
+                        <th>Sales Record Id</th>
+                        <th>Attendant Name</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody class="sale-body"></tbody>
+            </table>
             </div>
-            <div class="text-center">
-                <a class="btn btn__border--orange btn__color--dark clear-cart" href="#">Proceed</a>
-            </div>
+            
         </main>
-        
     </div>
-    <!-- <footer>
-        <div class="container">
-            <p class="text-center">Copyrigth 2018</p>
-        </div>
-    </footer> -->
+    
     <script src="js/script.js"></script>
     <script src="js/logout.js"></script>
-    <script src="js/attendantAuth.js"></script>
-    <script src="js/getCart.js"></script>
+    <script src="js/adminAuth.js"></script>
+    <script src="js/addSalesAttendant.js"></script>
+    <script src="js/getSalesRecord.js"></script>
   </body>
 </html>

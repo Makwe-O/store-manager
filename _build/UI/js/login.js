@@ -27,7 +27,7 @@ function login(e) {
     }
     localStorage.setItem('token', data.token);
     var decoded = jwt_decode(data.token);
-    window.location = decoded.role === 'Admin' ? 'dashboard-admin.html' : 'sales-record.html';
+    window.location = decoded.role === 'Admin' ? 'sales-attendants-admin.html' : 'sales-record.html';
   }).catch(function (error) {
     return console.log(error.message);
   });

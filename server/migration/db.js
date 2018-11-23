@@ -50,10 +50,9 @@ export const createTables = () => {
     `CREATE TABLE IF NOT EXISTS
           sales_record(
             sales_record_id serial PRIMARY KEY,
-            products_name character varying(100) NOT NULL,
-            buyers_name character varying(100) NOT NULL,
-            price INT NOT NULL,
-            amount INT NOT NULL,
+            user_id INT REFERENCES users(user_id),
+            product_id INT REFERENCES products(product_id),
+            sales_amount INT NOT NULL,
             date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           )`,
   );

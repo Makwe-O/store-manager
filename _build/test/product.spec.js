@@ -42,6 +42,28 @@ describe('POST /products', function () {
       });
     });
   });
+  it('should return a proper status code of 201 if product is created with proper response', function (done) {
+    _chai2.default.request(_index2.default).post('/api/v1/auth/login').send({
+      email: 'jide1@yahoo.com',
+      password: 'qwerty'
+    }).end(function (err, res) {
+      adminToken = res.body.token;
+      _chai2.default.request(_index2.default).post('/api/v1/products').send({
+        product_image: 'https://i.imgur.com/wOCKR8X.jpg',
+        product_name: 'Samsung',
+        price: 2200,
+        category_id: 1,
+        quantity: 20
+      }).set('Authorization', 'Bearer ' + adminToken).end(function (err, res) {
+        expect(res.status).to.equal(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('success');
+        expect(res.body.success).to.be.a('boolean');
+        expect(res.body.success).to.equal(true);
+        done();
+      });
+    });
+  });
   it('should return a proper status code of 401 if user has in valid token', function (done) {
     _chai2.default.request(_index2.default).post('/api/v1/auth/login').send({
       email: 'jide1@yahoo.com',
