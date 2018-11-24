@@ -5,7 +5,7 @@ const addSalesRecordForm = document.getElementById('addSalesRecordForm');
 
 function addSalesRecord(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/sales', {
+  fetch('https://store-manager-store.herokuapp.com/api/v1/sales', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

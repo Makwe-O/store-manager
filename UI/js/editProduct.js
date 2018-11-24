@@ -8,7 +8,7 @@ const editProductForm = document.getElementById('editProductForm');
 
 function editProduct(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+  fetch(`https://store-manager-store.herokuapp.com/api/v1/products/${productId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

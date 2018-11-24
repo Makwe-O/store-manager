@@ -4,7 +4,7 @@ const editCategoryForm = document.getElementById('editCategoryForm');
 
 function editCategory(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/categories/${categoryId}`, {
+  fetch(`https://store-manager-store.herokuapp.com/api/v1/categories/${categoryId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

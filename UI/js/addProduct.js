@@ -9,7 +9,7 @@ const addProductsForm = document.getElementById('addProductsForm');
 function addProduct(e) {
   e.preventDefault();
   console.log(Number(name.value));
-  fetch('http://localhost:3000/api/v1/products', {
+  fetch('https://store-manager-store.herokuapp.com/api/v1/products', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ const deleteProductForm = document.getElementById('deleteProductForm');
 
 function deleteProduct(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+  fetch(`https://store-manager-store.herokuapp.com/api/v1/products/${productId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

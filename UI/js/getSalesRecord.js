@@ -1,12 +1,11 @@
 const auth = localStorage.getItem('token');
-fetch('http://localhost:3000/api/v1/sales/', {
+fetch('https://store-manager-store.herokuapp.com/api/v1/sales/', {
   headers: {
     Authorization: `Bearer ${auth}`,
   },
 })
   .then(response => response.json())
-  .then((data) => {
-  
+  .then((data) => {  
     let output = '';
     // Check is there are products in the store
     if (data.sales_record.length === 0) {

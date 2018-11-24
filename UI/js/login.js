@@ -5,7 +5,7 @@ const errorId = document.getElementById('errorId');
 
 function login(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/auth/login', {
+  fetch('https://store-manager-store.herokuapp.com/api/v1/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

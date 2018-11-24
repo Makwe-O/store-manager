@@ -1,5 +1,5 @@
 const auth = localStorage.getItem('token');
-fetch('http://localhost:3000/api/v1/categories/', {
+fetch('https://store-manager-store.herokuapp.com/api/v1/categories/', {
   headers: {
     Authorization: `Bearer ${auth}`,
   },

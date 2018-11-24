@@ -1,7 +1,7 @@
 const auth = localStorage.getItem('token');
 const urlParams = new URLSearchParams(window.location.search);
 const productId = Number(urlParams.toString().replace('=', ''));
-fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+fetch(`https://store-manager-store.herokuapp.com/api/v1/products/${productId}`, {
   headers: {
     Authorization: `Bearer ${auth}`,
   },

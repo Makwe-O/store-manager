@@ -4,7 +4,7 @@ const addCategoryForm = document.getElementById('addCategoryForm');
 
 function addCategory(e) {
   e.preventDefault();
-  fetch('http://localhost:3000/api/v1/categories', {
+  fetch('https://store-manager-store.herokuapp.com/api/v1/categories', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

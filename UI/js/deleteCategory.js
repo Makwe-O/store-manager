@@ -2,7 +2,7 @@ const deleteCategoryForm = document.getElementById('deleteCategoryForm');
 
 function deleteCategory(e) {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/categories/${categoryId}`, {
+  fetch(`https://store-manager-store.herokuapp.com/api/v1/categories/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
