@@ -34,7 +34,7 @@ fetch('http://localhost:3000/api/v1/sales/', {
         output += `
                <tr>
                 <td>${sale_record.sales_record_id}</td>
-                <td>${sale_record.name}</td>
+                <td class="filter-name">${sale_record.name}</td>
                 <td>${sale_record.product_name}</td>
                 <td>${sale_record.price}</td>
                 <td>${sale_record.sales_amount}</td>
